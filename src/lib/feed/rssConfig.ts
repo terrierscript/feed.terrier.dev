@@ -1,5 +1,6 @@
 export type Config = {
   id: string,
+  origin: string
 } & {
     [key in string]: unknown
   }
