@@ -13,10 +13,11 @@ const parseRssItem = (item: Item) => {
   }
 }
 
-export const parseRss = (url: string) => {
-  return parser
+export const parseRss = async (url: string): Promise<Item[]> => {
+  const { items } = await parser
     .parseURL(url)
-    .then(({ items }) => items?.map(item => parseRssItem(item)))
+  // console.log(items)
+  return items?.map((item: Item) => parseRssItem(item)) ?? []
 }
 
 // module.exports = (url, config) => fromFeedItem(parseRss(url), config)

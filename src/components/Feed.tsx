@@ -1,14 +1,20 @@
+import React, { useState } from "react"
+import { Item } from "rss-parser"
 import { useFeed } from "../lib/feed/loader"
+import { LoadFeeds } from "./LoadFeed"
 
 
-const useFeeds = () => {
-  const s = useFeed()
-  console.log(s)
-}
 
 export const Feeds = () => {
-  useFeeds()
-  return <div>
+  const [feeds, setFeeds] = useState<Item[]>([])
 
+  return <div>
+    <LoadFeeds onLoadFeed={(item) => {
+      setFeeds(f => [...f, ...item])
+    }} />
+    {feeds.map(d => <div><a href={d.link}>
+      {d.title}
+    </a>
+    </div>)}
   </div>
 }

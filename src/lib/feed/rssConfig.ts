@@ -1,8 +1,13 @@
-export const rssConfig = [
+export type Config = {
+  id: string,
+} & {
+    [key in string]: unknown
+  }
+export const rssConfig: Config[] = [
   {
     id: "qiita",
     media: "Qiita",
-    proxy: "/feed/qiita",
+    // proxy: "/feed/qiita",
     origin: "https://qiita.com/terrierscript/feed.atom",
     dev: null,
     bgColor: "#55c500"
@@ -10,7 +15,7 @@ export const rssConfig = [
   {
     id: "devto",
     media: "dev.to",
-    proxy: "/feed/devto",
+    // proxy: "/feed/devto",
     dev: "https://dev.to/feed/terrierscript",
     origin: "https://dev.to/feed/terrierscript",
     bgColor: "#000"
@@ -18,7 +23,7 @@ export const rssConfig = [
   {
     id: "media",
     media: "Medium",
-    proxy: "/feed/medium",
+    // proxy: "/feed/medium",
     origin: "https://medium.com/feed/@terrierscript",
     dev: null,
     color: "#fff",
@@ -27,7 +32,7 @@ export const rssConfig = [
   {
     id: "scrapbox",
     media: "Scrapbox",
-    proxy: "/feed/scrapbox",
+    // proxy: "/feed/scrapbox",
     origin: "https://scrapbox.io/api/feed/terrierscript/",
     api: "https://scrapbox.io/api/pages/terrierscript?limit=1000",
     dev: null,
@@ -37,7 +42,7 @@ export const rssConfig = [
   {
     id: "note",
     media: "note",
-    proxy: "/feed/note",
+    // proxy: "/feed/note",
     origin: "https://note.mu/terrierscript/rss",
     dev: "https://note.mu/terrierscript/rss",
     // dev: null,
@@ -50,5 +55,4 @@ export const getConfigByMedia = (media: string) => {
   return rssConfig.find(r => {
     return r.media === media || r.id === media
   })
-
 }
