@@ -1,4 +1,4 @@
-export const config = [
+export const rssConfig = [
   {
     id: "qiita",
     media: "Qiita",
