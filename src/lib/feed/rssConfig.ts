@@ -34,8 +34,8 @@ export const rssConfig: Config[] = [
     id: "scrapbox",
     media: "Scrapbox",
     // proxy: "/feed/scrapbox",
-    origin: "https://scrapbox.io/api/feed/terrierscript/",
-    api: "https://scrapbox.io/api/pages/terrierscript?limit=1000",
+    // origin: "https://scrapbox.io/api/feed/terrierscript/",
+    origin: "https://scrapbox.io/api/pages/terrierscript?limit=1000",
     dev: null,
     bgColor: "#29a972",
     color: "#fff"

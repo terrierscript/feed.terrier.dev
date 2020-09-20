@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { loadFeedForSSR } from "../loader"
+import { loadFeedForSSR } from "../../../components/useFeed"
 import parseScrapboxApi from "../parseScrapboxApi"
 it("loadFeed", done => {
   loadFeedForSSR().then(r => {

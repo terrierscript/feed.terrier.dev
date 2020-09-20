@@ -1,12 +1,13 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 import { Item } from "rss-parser"
-import { useFeed } from "../lib/feed/loader"
+import { useFeed } from "./useFeed"
 import { LoadFeeds } from "./LoadFeed"
 
+const useFeedState = () => {
 
-
-export const Feeds = () => {
-  const [feeds, setFeeds] = useState<Item[]>([])
+}
+export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }: any) => {
+  const [feeds, setFeeds] = useState<Item[]>(initFeeds ?? [])
 
   return <div>
     <LoadFeeds onLoadFeed={(item) => {

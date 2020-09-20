@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react"
 import { Item } from "rss-parser"
 import { Config, rssConfig } from "../lib/feed/rssConfig"
-import { useFeed } from "../lib/feed/loader"
+import { useFeed } from "./useFeed"
 
 
 
