@@ -1,7 +1,8 @@
 
 import axios from "axios"
+import { Item } from "./Item"
 
-export const parseFromScrapbox = (url: string) => {
+export const parseFromScrapbox = (url: string): Item => {
   // @ts-ignore
   return axios.get(url).then(({ data }) => {
     return data.pages.map(({ title, created, ...p }: any) => {

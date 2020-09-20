@@ -1,11 +1,11 @@
 // const fromFeedItem = require("./fromFeedItem")
 // @ts-ignore
 import Parser from "rss-parser"
+import { Item } from "./Item"
 const parser = new Parser()
 
-type Item = any
-const parseRssItem = (item: Item) => {
-  const { title, link, pubDate } = item
+const parseRssItem = (rawItem: any) => {
+  const { title, link, pubDate } = rawItem
   return {
     title,
     link,
@@ -17,7 +17,7 @@ export const parseRss = async (url: string): Promise<Item[]> => {
   const { items } = await parser
     .parseURL(url)
   // console.log(items)
-  return items?.map((item: Item) => parseRssItem(item)) ?? []
+  return items?.map((item: any) => parseRssItem(item)) ?? []
 }
 
 // module.exports = (url, config) => fromFeedItem(parseRss(url), config)
