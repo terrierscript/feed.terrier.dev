@@ -1,12 +1,18 @@
 import axios from "axios"
-import { getUrlByMedia } = require("../../app/lib/feed/loader")
-const
-export default (req, res) => {
-  const {
-    query: { media }
-  } = req
-  const url = getUrlByMedia(media, true)
-  axios(url).then(({ data, headers }) => {
+import { NextApiRequest, NextApiResponse } from "next"
+import { getConfigByMedia } from "../../../lib/feed/rssConfig"
+
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  const { media } = req.query
+  if (!media || typeof media !== "string") {
+    return res.status(400).end()
+  }
+  const config = getConfigByMedia(media)
+  if (!config?.origin) {
+    return res.status(400).end()
+  }
+
+  axios(config.origin).then(({ data, headers }) => {
     const copyHeaders = ["content-type", "etag", "cache-control"]
     // console.log(headers)
     copyHeaders.map(key => {

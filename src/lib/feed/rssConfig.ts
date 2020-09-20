@@ -45,3 +45,10 @@ export const rssConfig = [
     color: "#fff"
   }
 ]
+
+export const getConfigByMedia = (media: string) => {
+  return rssConfig.find(r => {
+    return r.media === media || r.id === media
+  })
+
+}
