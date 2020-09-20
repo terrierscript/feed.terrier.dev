@@ -5,6 +5,7 @@ import { loadAllForSSR } from '../lib/feed/loadAll'
 
 export async function getServerSideProps() {
   const feeds = await loadAllForSSR()
+  console.log("F", feeds)
   return { props: { feeds } }
 }
 

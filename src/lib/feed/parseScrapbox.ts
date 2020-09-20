@@ -5,7 +5,6 @@ import { FeedItem } from "./Item"
 export const parseScrapbox = async (url: string): Promise<FeedItem[]> => {
   // @ts-ignore
   const { data } = await axios.get(url)
-  console.log(url, data)
   return data.pages.map(({ title, created, ...p }: any) => {
     return {
       title: title,
