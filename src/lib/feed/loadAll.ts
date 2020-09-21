@@ -1,24 +1,28 @@
 import { FeedItem } from "./Item"
-import { parseRss } from "./parser/parseRss"
-import { parseScrapbox } from "./parser/parseScrapbox"
+import { parseMedia } from "./parser/parseMedia"
 import { rssConfig } from "./rssConfig"
 
 export type FeedItemForSSR = Omit<FeedItem, "date"> & {
-  date: number
+  datetime: number
+  mediaId: string
 }
+
+
 export const loadAllForSSR = async (): Promise<FeedItemForSSR[]> => {
-  const fetches = Promise.all(rssConfig.map(config => {
-    switch (config.id) {
-      case "scrapbox":
-        return parseScrapbox(config.origin)
-      default:
-        return parseRss(config.origin)
-    }
+  const fetches = Promise.all(rssConfig.map(async config => {
+    const feeds = await parseMedia(config)
+    return feeds.map((d: FeedItem) => {
+      const { date, ...rest} =d
+      return {
+        ...rest,
+        datetime: d.date.getTime(),
+        mediaId: config.id
+      }
+    })
   }))
-  const results = await fetches
-  return results.flat().map(d => {
-    return {
-      ...d, date: d.date.getTime()
-    }
+  const results = (await fetches).flat()
+  results.sort((a,b) => {
+    return b.datetime - a.datetime
   })
+  return results.flat()
 }

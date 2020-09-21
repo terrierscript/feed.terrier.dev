@@ -22,7 +22,7 @@ export const rssConfig: Config[] = [
     bgColor: "#000"
   },
   {
-    id: "media",
+    id: "mediun",
     media: "Medium",
     // proxy: "/feed/medium",
     origin: "https://medium.com/feed/@terrierscript",

@@ -3,3 +3,4 @@ export type FeedItem = {
   link: string
   date: Date
 }
+
