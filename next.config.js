@@ -7,7 +7,7 @@ module.exports = withImages({
     return [
       {
         source: '/blog/:year/:slug', // automatically becomes /docs/with-basePath
-        destination: 'https://blog.terrier.dev/blog/', // automatically becomes /docs/another
+        destination: 'https://blog.terrier.dev/blog/:year/:slug', // automatically becomes /docs/another
         permanent: false,
       }
     ]
