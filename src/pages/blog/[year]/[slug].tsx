@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next"
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
 const redirectTo = (year: string, slug: string) => `https://blog.terrier.dev/blog/${year}/${slug}`
@@ -13,15 +13,19 @@ export const getServerSideProps = async ({ res, params }: GetServerSidePropsCont
   res.setHeader('Location', redirectTo(year, slug))
   res.statusCode = 302
   res.end()
-  return { year, slug }
-}
-export default function Blog({ year, slug }: any) {
-  const url = redirectTo(year, slug)
-  return <div>
-    <Helmet>
-
-    </Helmet>
-    redirect to: <a href={url}>{url}</a>
-  </div>
-
-}
+  return {
+    props: { year, slug }
+  }
+  export default function Blog({ year, slug }: any) {
+    const url = redirectTo(year, slug)
+    useEffect(() => {
+      // @ts-ignore
+      window?.href = url
+    }, [])
+    return <div>
+      <Helmet>
+        <link rel="canonical" href={url} />
+      </Helmet>
+      redirect to: <a href={url}>{url}</a>
+    </div>
+  }
