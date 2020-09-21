@@ -1,7 +1,8 @@
-import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme } from "@chakra-ui/core"
-import React, { FC, useEffect } from "react"
+import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme, Button, Divider } from "@chakra-ui/core"
+import React, { FC, useEffect, useState } from "react"
 import { Item } from "rss-parser"
 import { getConfigByMedia } from "../lib/feed/rssConfig"
+import { chunk } from "./chunk"
 import { useFeedAll } from "./useFeed"
 
 const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
@@ -42,18 +43,24 @@ const Feed: FC<{ feed: Item }> = ({ feed }) => {
   </Box>
 }
 
-export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }: any) => {
+export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
   // const [feeds, setFeeds] = useState<Item[]>(initFeeds ?? [])
   const { data } = useFeedAll(initFeeds)
-  useEffect(() => {
-    // setFeeds()
-  }, [data])
+  const [showFeedNum, setShowFeedsNum] = useState(10)
+  const showMore = () => {
+    setShowFeedsNum(s => s + 10)
+  }
   if (!data) {
     return <div>loading</div>
   }
+
   return <Stack spacing={4}>
-    {data.map((d, i) => <Box key={i}>
-      <Feed feed={d} />
-    </Box>)}
+    {data.slice(0, showFeedNum).map((d, i) => (
+      <Box key={i}>
+        <Feed feed={d} />
+        {i % 5 == 4 && <Divider />}
+      </Box>
+    ))}
+    <Button onClick={() => showMore()}>Show more</Button>
   </Stack>
 }
