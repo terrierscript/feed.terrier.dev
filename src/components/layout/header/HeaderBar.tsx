@@ -1,7 +1,7 @@
 import { Box, Heading, Grid, Link, Stack } from "@chakra-ui/core"
 import styled from "@emotion/styled"
 import React from "react"
-import { Terrier } from "./Terrier"
+import { Dog } from "./Dog"
 export const TITLE_BOLD_COLOR = "#111"
 
 export const impactFont = "Quicksand"
@@ -15,19 +15,10 @@ const Logo = styled(Link)`
   color: ${TITLE_BOLD_COLOR};
 `
 
-export const HeaderBar = () => {
+export const Header = () => {
   return (
-    <Box padding={4} >
-      <Logo href="/">
-        <Stack isInline spacing={4} >
-          <Box>
-            <Terrier />
-          </Box>
-          <Box>
-            <Heading>terrier.dev</Heading>
-          </Box>
-        </Stack>
-      </Logo>
+    <Box padding={4} justifyContent="center" textAlign="center">
+      <Heading>terrier.dev</Heading>
     </Box>
   )
 }

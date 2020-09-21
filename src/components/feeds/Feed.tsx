@@ -1,4 +1,4 @@
-import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme, Button, Divider } from "@chakra-ui/core"
+import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme, Button, Divider, Heading } from "@chakra-ui/core"
 import React, { FC, useEffect, useState } from "react"
 import { Item } from "rss-parser"
 import useSWR from "swr"
@@ -61,12 +61,15 @@ export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
   }
 
   return <Stack spacing={4}>
-    {data.slice(0, showFeedNum).map((d, i) => (
-      <Box key={i}>
-        <Feed feed={d} />
-        {i % 10 == 9 && <Divider />}
-      </Box>
-    ))}
-    <Button onClick={() => showMore()}>Show more</Button>
+    <Heading>Recent Posts</Heading>
+    <Stack spacing={4}>
+      {data.slice(0, showFeedNum).map((d, i) => (
+        <Box key={i}>
+          <Feed feed={d} />
+          {i % 10 == 9 && <Divider />}
+        </Box>
+      ))}
+      <Button onClick={() => showMore()}>Show more</Button>
+    </Stack>
   </Stack>
 }

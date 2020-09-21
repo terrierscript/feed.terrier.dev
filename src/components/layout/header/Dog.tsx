@@ -3,7 +3,8 @@ import React, { FC } from "react"
 import pretty from "./pretty.jpg"
 import { keyframes } from "@emotion/core"
 import styled from "@emotion/styled"
-import { Avatar, AvatarBadge, Box } from "@chakra-ui/core"
+import { Image, Avatar, AvatarBadge, AvatarProps, Box, ImageProps } from "@chakra-ui/core"
+
 const rotate360 = keyframes`
   from {
     transform: rotate(0deg);
@@ -13,7 +14,7 @@ const rotate360 = keyframes`
     transform: rotate(360deg);
   }
 `
-const Img = styled(Avatar)`
+const RotateImg = styled(Image)`
   vertical-align: middle;
   animation: ${rotate360} 6s linear infinite;
   animation-play-state: paused;
@@ -22,16 +23,13 @@ const Img = styled(Avatar)`
   }
 `
 
-const Dog: FC<any> = () => <Img src={pretty} alt="🐶" />
 
-const Container = styled.div`
-  display: inline-block;
-  margin-right: 0.2em;
-`
-export const Terrier = () => {
+// const Container = styled.div`
+//   display: inline-block;
+//   margin-right: 0.2em;
+// `
+export const Dog = (props: ImageProps) => {
   return (
-    <Box>
-      <Dog />
-    </Box>
+    <RotateImg src={pretty} {...props} rounded={"full"} />
   )
 }

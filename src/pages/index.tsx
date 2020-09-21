@@ -1,6 +1,8 @@
+import { Box } from '@chakra-ui/core'
 import Head from 'next/head'
 import React from 'react'
 import { Feeds } from "../components/feeds/Feed"
+import { Portfolio } from '../components/portfolio/Portfolio'
 import { loadAllForSSR } from '../lib/feed/loadAll'
 
 export async function getServerSideProps() {
@@ -9,12 +11,11 @@ export async function getServerSideProps() {
   return { props: { feeds } }
 }
 
-
-
 export default function Home({ feeds }: any) {
   return (
-    <div>
+    <Box>
+      <Portfolio />
       <Feeds initFeeds={feeds} />
-    </div>
+    </Box>
   )
 }
