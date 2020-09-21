@@ -70,7 +70,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx", "src/lib/feed/parser/parseZen.ts"
   ],
   "exclude": [
     "node_modules"

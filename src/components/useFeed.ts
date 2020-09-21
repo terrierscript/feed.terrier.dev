@@ -9,6 +9,10 @@ const getUrl = (id: string) => {
 }
 
 
+export const useFeedAll = () => {
+  return useSWR(`/api/feed`)
+}
+
 export const useFeed = (site: Config) => {
   const url = mediaProxyUrl(site.id)
   return useSWR(url, () => {
