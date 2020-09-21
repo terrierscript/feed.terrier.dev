@@ -17,6 +17,7 @@
     "emotion-theming": "^10.0.27",
     "jest": "^26.4.2",
     "next": "9.5.3",
+    "next-images": "^1.5.0",
     "node-html-parser": "^1.2.20",
     "parse5": "^6.0.1",
     "react": "16.13.1",

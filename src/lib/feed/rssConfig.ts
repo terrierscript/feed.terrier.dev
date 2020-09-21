@@ -16,7 +16,7 @@ export const rssConfig: Config[] = [
   {
     id: "devto",
     media: "dev.to",
-  // proxy: "/feed/devto",
+    // proxy: "/feed/devto",
     origin: "https://dev.to/feed/terrierscript",
     bgColor: "#000"
   },
