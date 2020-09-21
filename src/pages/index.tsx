@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
-import { Feeds } from "../components/Feed"
+import { Feeds } from "../components/feeds/Feed"
 import { loadAllForSSR } from '../lib/feed/loadAll'
 
 export async function getServerSideProps() {

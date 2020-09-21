@@ -1,7 +1,7 @@
 
 import { CSSReset, Grid, ThemeProvider } from "@chakra-ui/core"
 import React from "react"
-import { Layout } from "../components/Layout"
+import { Layout } from "../components/layout/Layout"
 
 function MyApp({
   Component,
