@@ -8,7 +8,7 @@ import { loadAllForSSR } from '../lib/feed/loadAll'
 export async function getServerSideProps() {
   try {
     const feeds = await loadAllForSSR()
-    console.log(feeds)
+    // console.log(feeds)
     return { props: { feeds } }
   } catch (e) {
     console.error(e)
