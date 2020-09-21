@@ -9,6 +9,7 @@ const DogDynamic = dynamic(
   ssr: false
 })
 export const Hero = () => {
+  const size = "100%"
   // @ts-ignore
-  return <DogDynamic size="80%" maxWidth={"80%"} maxHeight={"80%"} />
+  return <DogDynamic size={size} maxWidth={size} maxHeight={size} />
 }
