@@ -34,7 +34,6 @@ export const Portfolio = () => {
         alignSelf="center"
         templateColumns={size}
         autoRows={size}
-        width={"100%"} height={"100%"}
         alignItems="center"
         justifyItems="center"
       >
