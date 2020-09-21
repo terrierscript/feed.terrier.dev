@@ -8,7 +8,6 @@ export type FeedItemForSSR = Omit<Omit<FeedItem, "date">, "description"> & {
   description: string | null
 }
 
-
 export const loadAllForSSR = async (): Promise<FeedItemForSSR[]> => {
   const fetches = Promise.all(rssConfig.map(async config => {
     try {

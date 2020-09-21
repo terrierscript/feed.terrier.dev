@@ -51,7 +51,7 @@ export const rssConfig: Config[] = [
   {
     id: "blog",
     media: "blog",
-    origin: "https://terrier.dev/rss.xml",
+    origin: "https://blog.terrier.dev/rss.xml",
     bgColor: "#ff4b5c",
   }
 ]
