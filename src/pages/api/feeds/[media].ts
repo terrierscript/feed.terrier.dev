@@ -12,13 +12,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).end()
   }
   const data = await parseMedia(config)
-  // .then(({ data, headers }) => {
-  // const copyHeaders = ["content-type", "etag", "cache-control"]
-  // // console.log(headers)
-  // copyHeaders.map(key => {
-  //   res.setHeader(key, headers[key])
-  // })
   res.send(data)
   res.end()
-  // })
 }

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Item } from "rss-parser"
 import useSWR from "swr"
 import { parseRss } from "../lib/feed/parser/parseRss"
 import { Config } from "../lib/feed/rssConfig"
@@ -9,8 +10,10 @@ const getUrl = (id: string) => {
 }
 
 
-export const useFeedAll = () => {
-  return useSWR(`/api/feed`)
+export const useFeedAll = (initFeeds: Item[]) => {
+  return useSWR(`/api/feed`, {
+    initialData:initFeeds
+  })
 }
 
 export const useFeed = (site: Config) => {

@@ -5,11 +5,12 @@ import { FeedItem } from "../Item"
 const parser = new Parser()
 
 const parseRssItem = (rawItem: any) => {
-  const { title, link, pubDate } = rawItem
+  const { title, link, pubDate,description } = rawItem
   return {
     title,
     link,
-    date: new Date(pubDate)
+    date: new Date(pubDate),
+    description
   }
 }
 

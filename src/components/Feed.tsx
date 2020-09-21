@@ -4,22 +4,25 @@ import { useFeed, useFeedAll } from "./useFeed"
 import { LoadFeeds } from "./LoadFeed"
 
 const Feed: FC<{feed: Item}> = ({feed}) => {
-  return 
+  return <div>
+    <a href={feed.link}>
+      {feed.title}
+    </a>
+  </div>
 }
 
 export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }: any) => {
-  const [feeds, setFeeds] = useState<Item[]>(initFeeds ?? [])
-  const {data} = useFeedAll()
+  // const [feeds, setFeeds] = useState<Item[]>(initFeeds ?? [])
+  const {data} = useFeedAll(initFeeds)
   useEffect(() => {
     // setFeeds()
   },[data])
+  if(!data){
+    return <div>loading</div>
+  }
   return <div>
-    <LoadFeeds onLoadFeed={(item) => {
-      setFeeds(f => [...f, ...item])
-    }} />
-    {feeds.map(d => <div><a href={d.link}>
-      {d.title}
-    </a>
+    {data.map((d,i) => <div key={i}>
+      <Feed feed={d}/>
     </div>)}
   </div>
 }
