@@ -1,6 +1,6 @@
 import { useState } from "react"
 import useSWR from "swr"
-import { parseRss } from "../lib/feed/parseRss"
+import { parseRss } from "../lib/feed/parser/parseRss"
 import { Config } from "../lib/feed/rssConfig"
 
 const mediaProxyUrl = (id: string) => `/api/feed/${id}`

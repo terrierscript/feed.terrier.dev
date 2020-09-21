@@ -1,6 +1,6 @@
 
 import axios from "axios"
-import { FeedItem } from "./Item"
+import { FeedItem } from "../Item"
 
 export const parseScrapbox = async (url: string): Promise<FeedItem[]> => {
   // @ts-ignore

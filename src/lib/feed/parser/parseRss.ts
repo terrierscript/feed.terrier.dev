@@ -1,7 +1,7 @@
 // const fromFeedItem = require("./fromFeedItem")
 // @ts-ignore
 import Parser from "rss-parser"
-import { FeedItem } from "./Item"
+import { FeedItem } from "../Item"
 const parser = new Parser()
 
 const parseRssItem = (rawItem: any) => {

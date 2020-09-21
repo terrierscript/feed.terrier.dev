@@ -1,6 +1,6 @@
 import { FeedItem } from "./Item"
-import { parseRss } from "./parseRss"
-import { parseScrapbox } from "./parseScrapbox"
+import { parseRss } from "./parser/parseRss"
+import { parseScrapbox } from "./parser/parseScrapbox"
 import { rssConfig } from "./rssConfig"
 
 export type FeedItemForSSR = Omit<FeedItem, "date"> & {
