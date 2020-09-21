@@ -47,6 +47,12 @@ export const rssConfig: Config[] = [
     origin: "https://zenn.dev/terrierscript",
     bgColor: "#3ea8ff",
     color: "white"
+  },
+  {
+    id: "blog",
+    media: "blog",
+    origin: "https://terrier.dev/rss.xml",
+    bgColor: "#ff4b5c",
   }
 ]
 

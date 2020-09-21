@@ -8,14 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
     "@kiwicom/orbit-components": "^0.92.0",
     "axios": "^0.20.0",
+    "emotion-theming": "^10.0.27",
     "jest": "^26.4.2",
     "next": "9.5.3",
     "node-html-parser": "^1.2.20",
     "parse5": "^6.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-helmet": "^6.1.0",
     "rss-parser": "^3.9.0",
     "styled-components": "^5.2.0",
     "swr": "^0.3.2"

@@ -1,9 +1,18 @@
 
+import { CSSReset, Grid, ThemeProvider } from "@chakra-ui/core"
+import React from "react"
+import { Layout } from "../components/Layout"
+
 function MyApp({
   Component,
   pageProps
 }: any) {
-  return <Component {...pageProps} />
+  return <ThemeProvider>
+    <CSSReset />
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  </ThemeProvider>
 }
 
 export default MyApp

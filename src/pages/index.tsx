@@ -5,11 +5,13 @@ import { loadAllForSSR } from '../lib/feed/loadAll'
 
 export async function getServerSideProps() {
   const feeds = await loadAllForSSR()
+  console.log(feeds)
   return { props: { feeds } }
 }
 
+
+
 export default function Home({ feeds }: any) {
-  // const initFeeds = props?.data
   return (
     <div>
       <Feeds initFeeds={feeds} />
