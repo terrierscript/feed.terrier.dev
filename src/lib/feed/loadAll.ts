@@ -11,19 +11,24 @@ export type FeedItemForSSR = Omit<Omit<FeedItem, "date">, "description"> & {
 
 export const loadAllForSSR = async (): Promise<FeedItemForSSR[]> => {
   const fetches = Promise.all(rssConfig.map(async config => {
-    const feeds = await parseMedia(config)
-    return feeds.map((d: FeedItem) => {
-      const { date, description, ...rest} =d
-      return {
-        ...rest,
-        datetime: d.date.getTime(),
-        mediaId: config.id,
-        description: description ?? null
-      }
-    })
+    try {
+      const feeds = await parseMedia(config)
+      return feeds.map((d: FeedItem) => {
+        const { date, description, ...rest } = d
+        return {
+          ...rest,
+          datetime: d.date.getTime(),
+          mediaId: config.id,
+          description: description ?? null
+        }
+      })
+    } catch (e) {
+      console.error(e)
+      return []
+    }
   }))
   const results = (await fetches).flat()
-  results.sort((a,b) => {
+  results.sort((a, b) => {
     return b.datetime - a.datetime
   })
   return results.flat()
