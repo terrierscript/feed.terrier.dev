@@ -6,9 +6,14 @@ import { Portfolio } from '../components/portfolio/Portfolio'
 import { loadAllForSSR } from '../lib/feed/loadAll'
 
 export async function getServerSideProps() {
-  const feeds = await loadAllForSSR()
-  console.log(feeds)
-  return { props: { feeds } }
+  try {
+    const feeds = await loadAllForSSR()
+    console.log(feeds)
+    return { props: { feeds } }
+  } catch (e) {
+    console.error(e)
+    return { props: { feeds: [] } }
+  }
 }
 
 export default function Home({ feeds }: any) {
