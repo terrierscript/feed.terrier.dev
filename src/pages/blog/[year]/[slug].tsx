@@ -17,11 +17,12 @@ export const getServerSideProps = async ({ res, params }: GetServerSidePropsCont
     props: { year, slug }
   }
 }
+
 export default function Blog({ year, slug }: any) {
   const url = redirectTo(year, slug)
   useEffect(() => {
     // @ts-ignore
-    window?.href = url
+    // window?.href = url
   }, [])
   return <div>
     <Helmet>
