@@ -25,10 +25,13 @@ const AvaterLinks = () => {
 }
 export const Portfolio = () => {
   return <Box py={8}>
-    <Grid templateColumns={"1fr 1fr"} gap={8}>
-      <Box justifyContent="center" alignContent="center" >
-        <Hero />
-      </Box>
+    <Grid templateColumns={"1fr 1fr"} gap={8}
+      alignItems="center"
+      justifyItems="center"
+      style={{
+        placeItems: "center center"
+      }}>
+      <Hero />
       <Box>
         <AvaterLinks />
       </Box>
