@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { keyframes } from "@emotion/core"
 import styled from "@emotion/styled"
-import { Image, ImageProps } from "@chakra-ui/core"
+import { Grid, Image, ImageProps } from "@chakra-ui/core"
 import { randomPretty } from "./randomPretty"
-
+import { animated, useSpring } from "react-spring"
 const rotate360 = keyframes`
   from {
     transform: rotate(0deg);
@@ -22,12 +22,27 @@ const RotateImg = styled(Image)`
   }
 `
 
+const AminatedImg = animated(RotateImg)
+// const Animated
 export const Dog = (props: ImageProps) => {
+  // const springProps = useSpring({
+  //   to: { opacity: 0 },
+  //   from: { opacity: 1 }
+  //   // () => ({ opacity: 1 })
+  // })
+
+  // console.log(springProps)
   const [img, setImg] = useState(randomPretty())
   return (
-    <RotateImg src={img} {...props}
-      onClick={() => setImg(randomPretty())}
-      rounded={"full"}
+    <AminatedImg src={img}
+      {...props}
+      // style={springProps}
+      onClick={() => {
+        // console.log("aa")
+        // set({ opacity: 0 })
+        setImg(randomPretty())
+      }}
+      rounded={"100%"}
       objectFit="cover"
     />
   )

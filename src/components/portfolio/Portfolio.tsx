@@ -28,10 +28,14 @@ export const Portfolio = () => {
     <Grid templateColumns={"1fr 1fr"} gap={8}
       alignItems="center"
       justifyItems="center"
-      style={{
-        placeItems: "center center"
-      }}>
-      <Hero />
+    >
+      <Grid
+        width={"100%"} height={"100%"}
+        alignItems="center"
+        justifyItems="center"
+      >
+        <Hero />
+      </Grid>
       <Box>
         <AvaterLinks />
       </Box>
