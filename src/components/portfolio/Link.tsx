@@ -33,6 +33,7 @@ const MoreRow = () => {
     return <Link onClick={() => setShow(true)} color={"gray.500"} >more..</Link>
   }
   return <>
+    <ListLinkSecond href="https://blog.terrier.dev">Blog</ListLinkSecond>
     <ListLinkSecond href="https://scrapbox.io/terrierscript/">Scrapbox</ListLinkSecond>
     <ListLinkSecond href="https://www.notion.so/terrierscript/d9d2f56606d14e6f91703201a21e5cde">notion</ListLinkSecond>
     <ListLinkSecond href="https://dev.to/terrierscript">dev.to</ListLinkSecond>
