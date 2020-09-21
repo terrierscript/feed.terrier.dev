@@ -12,6 +12,7 @@
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@kiwicom/orbit-components": "^0.92.0",
+    "@types/react-helmet": "^6.1.0",
     "axios": "^0.20.0",
     "emotion-theming": "^10.0.27",
     "jest": "^26.4.2",
