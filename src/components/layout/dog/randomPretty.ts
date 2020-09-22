@@ -2,6 +2,12 @@
 
 const imgs = [
   require("./pretty1.jpg"),
+  require("./pretty1.jpg"),
+  require("./pretty1.jpg"),
+  require("./pretty1.jpg"),
+  require("./pretty1.jpg"),
+  require("./pretty1.jpg"),
+  require("./pretty1.jpg"),
   require("./pretty2.jpg"),
   require("./pretty3.jpg"),
   require("./pretty4.jpg"),

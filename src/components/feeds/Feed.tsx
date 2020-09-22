@@ -25,8 +25,8 @@ const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
 
 const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
   const date = new Date(datetime)
-  return <Badge width={"5rem"}>
-    {date.toLocaleDateString("sv-SE").replaceAll("-", "/")}
+  return <Badge width={"5rem"} fontWeight="normal">
+    {date.toLocaleDateString("sv-SE")}
   </Badge>
 
 }
