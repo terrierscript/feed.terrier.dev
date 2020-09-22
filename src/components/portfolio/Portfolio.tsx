@@ -1,4 +1,4 @@
-import { Text, Avatar, Box, Flex, Grid, Stack, Heading } from "@chakra-ui/core"
+import { Image, Text, Avatar, Box, Flex, Grid, Stack, Heading } from "@chakra-ui/core"
 import React from "react"
 import { Hero } from "./Hero"
 import { Links } from "./Link"
@@ -10,11 +10,11 @@ const AvaterLinks = () => {
   return <Grid gap={4}
   // justifyContent="center"
   >
+    <Heading size="lg">About me</Heading>
     <Stack isInline
       align="center"
     >
-      <Heading size="lg">About me</Heading>
-      <Avatar src={avater}></Avatar>
+      <Avatar src={avater} backgroundColor="white" />
       <Box>
         <Heading size="md">@terrierscript</Heading>
       </Box>
