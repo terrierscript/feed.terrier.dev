@@ -13,6 +13,7 @@ const AvaterLinks = () => {
     <Stack isInline
       align="center"
     >
+      <Heading size="lg">About me</Heading>
       <Avatar src={avater}></Avatar>
       <Box>
         <Heading size="md">@terrierscript</Heading>
