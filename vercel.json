@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "env": {
+    "SLACK_WEBHOOK_URL": "@slack_webhook_url"
+  },
+  "regions": [
+    "hnd1"
+  ],
+  "github": {
+    "silent": true
+  }
+}
