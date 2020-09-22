@@ -26,8 +26,9 @@ const AvaterLinks = () => {
 export const Portfolio = () => {
   const size = `min(32vw, 240px)`
   return <Box py={8}>
-    <Grid templateColumns={`${size} 1fr`} gap={8}
+    <Grid templateColumns={`${size} min(32vw, 240px)`} gap={8}
       alignItems="center"
+      justifyContent="space-evenly"
       justifyItems="center"
     >
       <Grid
