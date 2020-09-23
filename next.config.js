@@ -11,5 +11,8 @@ module.exports = withImages({
         permanent: false,
       }
     ]
+  },
+  env: {
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN
   }
 })
