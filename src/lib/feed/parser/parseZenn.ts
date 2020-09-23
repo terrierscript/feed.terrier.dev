@@ -14,7 +14,8 @@ export const parseZenn = async (url: string): Promise<FeedItem[]> => {
     return {
       title,
       link: `https://zenn.dev/terrierscript/articles/${slug}`,
-      date: new Date(date[0], date[1] - 1, date[2]),
+      date:
+        new Date(date[0], date[1] - 1, date[2]),
       // description: topics.join(",")
     }
   })
