@@ -1,15 +1,8 @@
-// import axios from "axios"
 import { FeedItem } from "../Item"
-// import { parse } from 'node-html-parser'
-// import { Octokit } from "@octokit/rest"
 import { graphql } from "@octokit/graphql"
 import grayMatter from "gray-matter"
-// const octokit = new Octokit({
-//   auth: process.env.GITHUB_TOKEN
-// })
 
-
-console.log("TOKEN:", process.env.GITHUB_TOKEN?.slice(0, 4))
+// console.log("TOKEN:", process.env.GITHUB_TOKEN?.slice(0, 4))
 
 const graphqlWithAuth = graphql.defaults({
   headers: {
@@ -42,15 +35,7 @@ const parseMatter = (file: string) => {
 }
 
 export const parseZennFromGit = async (url: string): Promise<FeedItem[]> => {
-
-  const owner = "terrierscript"
-  const repo = "zenn"
   const content: any = await graphqlWithAuth(query)
-  // octokit.repos.getContent({
-  //   owner,
-  //   repo,
-  //   path: "articles"
-  // })
   const items: any[] = content?.repository?.object?.entries
   // @ts-ignore
   const feeds: FeedItem[] = items.map((item): FeedItem | null => {
