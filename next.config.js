@@ -12,7 +12,7 @@ module.exports = withImages({
       }
     ]
   },
-  env: {
-    GITHUB_TOKEN: process.env.GITHUB_TOKEN
-  }
+  // env: {
+  //   GITHUB_TOKEN: process.env.GITHUB_TOKEN
+  // }
 })
