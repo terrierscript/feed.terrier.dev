@@ -67,5 +67,7 @@ export const parseZennFromGit = async (url: string): Promise<FeedItem[]> => {
       // description: content
     }
   }).filter(r => r !== null)
+  console.log("TOKEN:", process.env.GITHUB_TOKEN?.slice(0, 4))
+
   return feeds
 }
