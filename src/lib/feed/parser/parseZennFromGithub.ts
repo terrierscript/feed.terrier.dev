@@ -9,7 +9,8 @@ import grayMatter from "gray-matter"
 // })
 
 
-console.log("TOKEN:", process.env.GITHUB_TOKEN?.split(0, 4))
+console.log("TOKEN:", process.env.GITHUB_TOKEN?.slice(0, 4))
+
 const graphqlWithAuth = graphql.defaults({
   headers: {
     authorization: `token ${process.env.GITHUB_TOKEN}`,
