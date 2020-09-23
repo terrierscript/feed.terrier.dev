@@ -1,14 +1,15 @@
-import axios from "axios"
+// import axios from "axios"
 import { FeedItem } from "../Item"
-import { parse } from 'node-html-parser'
-import { Octokit } from "@octokit/rest"
+// import { parse } from 'node-html-parser'
+// import { Octokit } from "@octokit/rest"
 import { graphql } from "@octokit/graphql"
 import grayMatter from "gray-matter"
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN
-})
+// const octokit = new Octokit({
+//   auth: process.env.GITHUB_TOKEN
+// })
 
 
+console.log("TOKEN:", process.env.GITHUB_TOKEN?.split(0, 4))
 const graphqlWithAuth = graphql.defaults({
   headers: {
     authorization: `token ${process.env.GITHUB_TOKEN}`,
