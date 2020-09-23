@@ -35,24 +35,29 @@ const parseMatter = (file: string) => {
 }
 
 export const parseZennFromGit = async (url: string): Promise<FeedItem[]> => {
-  const content: any = await graphqlWithAuth(query)
-  const items: any[] = content?.repository?.object?.entries
-  // @ts-ignore
-  const feeds: FeedItem[] = items.map((item): FeedItem | null => {
-    const { data: { title, emoji, published }, content } = parseMatter(item?.object?.text)
-    if (!published) {
-      return null
-    }
-    const slug = item.name.replace(".md")
-    const date = slug.split("-")
-    return {
-      title,
-      link: `https://zenn.dev/terrierscript/articles/${slug}`,
-      date: new Date(date[0], date[1] - 1, date[2]),
-      // description: content
-    }
-  }).filter(r => r !== null)
-  console.log("TOKEN:", process.env.GITHUB_TOKEN?.slice(0, 4))
+  try {
+    const content: any = await graphqlWithAuth(query)
+    const items: any[] = content?.repository?.object?.entries
+    // @ts-ignore
+    const feeds: FeedItem[] = items.map((item): FeedItem | null => {
+      const { data: { title, emoji, published }, content } = parseMatter(item?.object?.text)
+      if (!published) {
+        return null
+      }
+      const slug = item.name.replace(".md")
+      const date = slug.split("-")
+      return {
+        title,
+        link: `https://zenn.dev/terrierscript/articles/${slug}`,
+        date: new Date(date[0], date[1] - 1, date[2]),
+        // description: content
+      }
+    }).filter(r => r !== null)
+    return feeds
+  } catch (e) {
+    console.warn("XXXXXXXxx")
+    console.log("TOKEN:", process.env.GITHUB_TOKEN?.slice(0, 4))
+    return []
+  }
 
-  return feeds
 }
