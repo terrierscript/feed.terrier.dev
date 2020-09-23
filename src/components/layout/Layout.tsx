@@ -6,7 +6,7 @@ import { Header } from "./header/HeaderBar"
 export const Layout: FC<{}> = ({ children }) => {
   return <Box minWidth="400px" px="4">
     <Grid
-      templateColumns="minmax(,min-content,60vw)"
+      templateColumns="minmax(min-content,40vw)"
       justifyContent="center"
       gap="4"
     >
