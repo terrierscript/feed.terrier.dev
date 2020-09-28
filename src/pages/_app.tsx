@@ -1,7 +1,7 @@
 
 
 import { CacheProvider } from '@emotion/core'
-// import { cache } from '@emotion/css'
+import { cache } from 'emotion'
 
 import { CSSReset, Grid, ThemeProvider } from "@chakra-ui/core"
 import React from "react"
@@ -11,14 +11,14 @@ function MyApp({
   Component,
   pageProps
 }: any) {
-  // return <CacheProvider value={cache}>
-  return <ThemeProvider>
-    <CSSReset />
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  </ThemeProvider>
-  // </CacheProvider>
+  return <CacheProvider value={cache}>
+    <ThemeProvider>
+      <CSSReset />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
+  </CacheProvider>
 }
 
 export default MyApp
