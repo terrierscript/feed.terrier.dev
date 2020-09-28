@@ -1,6 +1,6 @@
 
 
-import { CacheProvider } from '@emotion/react'
+import { CacheProvider } from '@emotion/core'
 // import { cache } from '@emotion/css'
 
 import { CSSReset, Grid, ThemeProvider } from "@chakra-ui/core"
