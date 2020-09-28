@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "preinstall": "yum install -y libpng-devel libjpeg-devel libwebp-tools libglvnd-glx libXi"
   },
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
