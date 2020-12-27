@@ -7,21 +7,23 @@ import { loadAllForSSR } from '../lib/feed/loadAll'
 
 export async function getStaticProps() {
   try {
-    console.log("Static props")
+    const random = Math.random()
     const feeds = await loadAllForSSR()
+    console.log("getStaticProps", random)
     // console.log(feeds)
-    return { props: { feeds }, revalidate:60 }
+    return { props: { feeds,random }, revalidate: 60 }
   } catch (e) {
     console.error(e)
-    return { props: { feeds: [] },revalidate:60 }
+    return { props: { feeds: [] },revalidate: 60 }
   }
 }
 
-export default function Home({ feeds }: any) {
+export default function Home({ feeds,random }: any) {
   return (
     <Box>
       <Portfolio />
       <Feeds initFeeds={feeds} />
+      {/* <div>{random}</div> */}
     </Box>
   )
 }
