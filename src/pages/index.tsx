@@ -5,14 +5,15 @@ import { Feeds } from "../components/feeds/Feed"
 import { Portfolio } from '../components/portfolio/Portfolio'
 import { loadAllForSSR } from '../lib/feed/loadAll'
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
+    console.log("Static props")
     const feeds = await loadAllForSSR()
     // console.log(feeds)
-    return { props: { feeds } }
+    return { props: { feeds }, revalidate:60 }
   } catch (e) {
     console.error(e)
-    return { props: { feeds: [] } }
+    return { props: { feeds: [] },revalidate:60 }
   }
 }
 
