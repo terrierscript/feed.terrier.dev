@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import { keyframes } from "@emotion/core"
 import styled from "@emotion/styled"
-import { Grid, Image, ImageProps } from "@chakra-ui/core"
+import { Box, BoxProps, Grid, ImageProps } from "@chakra-ui/core"
+import NextImage from 'next/image'
+
 import { randomPretty } from "./randomPretty"
 import { animated, useSpring } from "react-spring"
 const rotate360 = keyframes`
@@ -13,7 +15,7 @@ const rotate360 = keyframes`
     transform: rotate(360deg);
   }
 `
-const RotateImg = styled(Image)`
+const RotateImg = styled(Box)`
   vertical-align: middle;
   animation: ${rotate360} 6s linear infinite;
   animation-play-state: paused;
@@ -24,7 +26,7 @@ const RotateImg = styled(Image)`
 
 const AminatedImg = animated(RotateImg)
 // const Animated
-export const Dog = (props: ImageProps) => {
+export const Dog = (props: BoxProps) => {
   // const springProps = useSpring({
   //   to: { opacity: 0 },
   //   from: { opacity: 1 }
@@ -34,7 +36,7 @@ export const Dog = (props: ImageProps) => {
   // console.log(springProps)
   const [img, setImg] = useState(randomPretty())
   return (
-    <AminatedImg src={img}
+    <AminatedImg 
       {...props}
       // style={springProps}
       onClick={() => {
@@ -42,8 +44,15 @@ export const Dog = (props: ImageProps) => {
         // set({ opacity: 0 })
         setImg(randomPretty())
       }}
-      rounded={"100%"}
-      objectFit="cover"
-    />
+      // layout={"fill"}
+      overflow="hidden"
+      borderRadius={"100%"}
+    >
+      <NextImage
+        src={img}
+        width={600}
+      height={600}
+      objectFit="cover"/>
+    </AminatedImg>
   )
 }
