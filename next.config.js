@@ -1,5 +1,5 @@
-const withImages = require('next-optimized-images')
-module.exports = withImages({
+// const withImages = require('next-optimized-images')
+module.exports = {
   webpack(config, options) {
     return config
   },
@@ -15,4 +15,4 @@ module.exports = withImages({
   // env: {
   //   GITHUB_TOKEN: process.env.GITHUB_TOKEN
   // }
-})
+}
