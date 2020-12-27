@@ -1,4 +1,4 @@
-import { Image, Text, Avatar, Box, Flex, Grid, Stack, Heading } from "@chakra-ui/core"
+import { Avatar, Box, Grid, Stack, Heading } from "@chakra-ui/core"
 import React from "react"
 import { Hero } from "./Hero"
 import { Links } from "./Link"
