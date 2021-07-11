@@ -5,6 +5,7 @@ export type Config = {
   origin: string
   bgColor: string
   color?: string
+  priority?: "low" | "medium" | "high"
 }
 export const rssConfig: Config[] = [
   {
@@ -54,6 +55,7 @@ export const rssConfig: Config[] = [
     origin: "https://zenn.dev/terrierscript/scraps",
     bgColor: "#545c77",
     color: "white",
+    priority: "low"
   },
   {
     id: "blog",

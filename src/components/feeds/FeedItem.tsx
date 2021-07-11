@@ -1,4 +1,4 @@
-import { Text, Badge, Box, Link, Flex } from "@chakra-ui/react"
+import { Text, Badge, Box, Link, Flex, HStack, Stack } from "@chakra-ui/react"
 import React, { FC } from "react"
 import { Item } from "rss-parser"
 import { getConfigByMedia } from "../../lib/feed/rssConfig"
@@ -22,9 +22,11 @@ const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
   </Badge>
 
 }
-export const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
-  return <Box borderWidth={1} borderRadius={4} backgroundColor={"gray.100"} padding={4}>
-    <Box>
+
+
+const DefaultFeedItem: FC<{ feed: Item }> = ({ feed }) => {
+  return <Box>
+    <Stack>
       <Flex style={{ gap: 4 }} py={2}>
         <DateTime datetime={feed.datetime} />
         <MediaBadge mediaId={feed.mediaId} />
@@ -36,6 +38,32 @@ export const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
           </Text>
         </Link>
       </Box>
-    </Box>
+    </Stack>
   </Box>
+}
+const LowPriorityFeedItem: FC<{ feed: Item }> = ({ feed }) => {
+  return <Box>
+    <Stack>
+      <Flex style={{ gap: 4 }} py={2}>
+        <DateTime datetime={feed.datetime} />
+        <MediaBadge mediaId={feed.mediaId} />
+      </Flex>
+      <Box>
+        <Link href={feed.link}>
+          <Text>
+            {feed.title}
+          </Text>
+        </Link>
+      </Box>
+    </Stack>
+  </Box>
+}
+
+export const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
+  const config = getConfigByMedia(feed.mediaId)
+
+  if (config?.priority === "low") {
+    return <LowPriorityFeedItem feed={feed} />
+  }
+  return <DefaultFeedItem feed={feed} />
 }
