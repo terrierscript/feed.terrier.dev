@@ -14,7 +14,6 @@ export async function getStaticProps() {
   try {
     const random = Math.random()
     const feeds = await loadAllForSSR()
-    console.log("getStaticProps", random)
     // console.log(feeds)
     return { props: { feeds, random }, revalidate: 60 }
   } catch (e) {
