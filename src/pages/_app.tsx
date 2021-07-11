@@ -1,24 +1,23 @@
 
 
-import { CacheProvider } from '@emotion/core'
-import { cache } from 'emotion'
-
-import { CSSReset, Grid, ThemeProvider } from "@chakra-ui/core"
 import React from "react"
 import { Layout } from "../components/layout/Layout"
+import { ChakraProvider, StylesProvider } from '@chakra-ui/react'
 
 function MyApp({
   Component,
   pageProps
 }: any) {
-  return <CacheProvider value={cache}>
-    <ThemeProvider>
-      <CSSReset />
+  // <CacheProvider value={cache}>
+  return <ChakraProvider>
+    <StylesProvider>
+
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </ThemeProvider>
-  </CacheProvider>
+    </StylesProvider>
+  </ChakraProvider>
+  // </CacheProvider>
 }
 
 export default MyApp
