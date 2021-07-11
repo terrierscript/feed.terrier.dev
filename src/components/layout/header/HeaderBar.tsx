@@ -1,4 +1,4 @@
-import { Box, Heading, Grid, Link, Stack } from "@chakra-ui/core"
+import { Box, Heading, Grid, Link, Stack } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import React from "react"
 import { Dog } from "../dog/Dog"

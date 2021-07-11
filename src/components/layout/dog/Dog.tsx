@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { keyframes } from "@emotion/core"
+import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
-import { Box, BoxProps, Grid, ImageProps } from "@chakra-ui/core"
+import { Box, BoxProps, Grid, ImageProps } from "@chakra-ui/react"
 import NextImage from 'next/image'
 
 import { randomPretty } from "./randomPretty"
@@ -36,7 +36,7 @@ export const Dog = (props: BoxProps) => {
   // console.log(springProps)
   const [img, setImg] = useState(randomPretty())
   return (
-    <AminatedImg 
+    <AminatedImg
       {...props}
       // style={springProps}
       onClick={() => {
@@ -51,8 +51,8 @@ export const Dog = (props: BoxProps) => {
       <NextImage
         src={img}
         width={600}
-      height={600}
-      objectFit="cover"/>
+        height={600}
+        objectFit="cover" />
     </AminatedImg>
   )
 }
