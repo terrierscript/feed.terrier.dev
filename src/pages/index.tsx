@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/core'
+import { GetStaticPaths } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import { Feeds } from "../components/feeds/Feed"
@@ -11,19 +12,26 @@ export async function getStaticProps() {
     const feeds = await loadAllForSSR()
     console.log("getStaticProps", random)
     // console.log(feeds)
-    return { props: { feeds,random }, revalidate: 60 }
+    return { props: { feeds, random }, revalidate: 60 }
   } catch (e) {
     console.error(e)
-    return { props: { feeds: [] },revalidate: 60 }
+    return { props: { feeds: [] }, revalidate: 60 }
   }
 }
 
-export default function Home({ feeds,random }: any) {
+export default function Home({ feeds, random }: any) {
   return (
     <Box>
       <Portfolio />
       <Feeds initFeeds={feeds} />
       {/* <div>{random}</div> */}
     </Box>
+
   )
+}
+export const getStaticPaths: GetStaticPaths = async (req) => {
+  return {
+    paths: [],
+    fallback: "blocking"
+  }
 }
