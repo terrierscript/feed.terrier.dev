@@ -6,5 +6,8 @@
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "dependencyDashboard": true,
+  "stabilityDays": 3,
+  "prCreation": "not-pending"
 }
