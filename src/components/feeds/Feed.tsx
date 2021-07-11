@@ -1,4 +1,4 @@
-import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme, Button, Divider, Heading, SimpleGrid } from "@chakra-ui/core"
+import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme, Button, Divider, Heading, SimpleGrid } from "@chakra-ui/react"
 import React, { FC, useEffect, useState } from "react"
 import { Item } from "rss-parser"
 import useSWR from "swr"
