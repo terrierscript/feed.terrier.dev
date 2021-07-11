@@ -5,6 +5,11 @@ import { Feeds } from "../components/feeds/Feed"
 import { Portfolio } from '../components/portfolio/Portfolio'
 import { loadAllForSSR } from '../lib/feed/loadAll'
 
+// @ts-ignore
+export function reportWebVitals(metric) {
+  console.log(metric)
+}
+
 export async function getStaticProps() {
   try {
     const random = Math.random()
