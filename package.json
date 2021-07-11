@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.5",
-    "@emotion/core": "^11",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@octokit/rest": "^18.0.6",

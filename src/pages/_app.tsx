@@ -10,12 +10,9 @@ function MyApp({
 }: any) {
   // <CacheProvider value={cache}>
   return <ChakraProvider>
-    <StylesProvider>
-
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </StylesProvider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   </ChakraProvider>
   // </CacheProvider>
 }
