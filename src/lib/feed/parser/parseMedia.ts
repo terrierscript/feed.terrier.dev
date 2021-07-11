@@ -1,8 +1,6 @@
 import { Config } from "../rssConfig"
 import { parseRss } from "./parseRss"
 import { parseScrapbox } from "./parseScrapbox"
-import { parseZenn } from "./parseZenn"
-import { parseZennFromGit } from "./parseZennFromGithub"
 import { parseZennRss } from "./parseZennRss"
 import { parseZennScrap } from "./parseZennScrap"
 
