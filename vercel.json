@@ -2,8 +2,5 @@
   "version": 2,
   "regions": [
     "hnd1"
-  ],
-  "github": {
-    "silent": true
-  }
+  ]
 }
