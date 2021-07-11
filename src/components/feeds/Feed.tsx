@@ -15,7 +15,8 @@ const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
   const config = getConfigByMedia(media)
   return <Badge
     borderRadius={8}
-    width={"5rem"}
+    maxWidth={"8rem"}
+    px={"1rem"}
     textAlign="center"
     color={config?.color ?? "white"}
     backgroundColor={config?.bgColor ?? "black"}>

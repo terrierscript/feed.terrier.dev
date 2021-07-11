@@ -49,6 +49,13 @@ export const rssConfig: Config[] = [
     color: "white"
   },
   {
+    id: "zennScrap",
+    media: "zenn(scrap)",
+    origin: "https://zenn.dev/terrierscript/scraps",
+    bgColor: "#545c77",
+    color: "white"
+  },
+  {
     id: "blog",
     media: "blog",
     origin: "https://blog.terrier.dev/rss.xml",
