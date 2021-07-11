@@ -1,5 +1,5 @@
-import { Text, Badge, Box, Link, Flex, HStack, Stack } from "@chakra-ui/react"
-import React, { FC } from "react"
+import { Text, Badge, Box, Link, Flex, HStack, Stack, Divider, Grid, VStack } from "@chakra-ui/react"
+import React, { FC, useMemo } from "react"
 import { Item } from "rss-parser"
 import { getConfigByMedia } from "../../lib/feed/rssConfig"
 
@@ -12,58 +12,57 @@ const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
     textAlign="center"
     color={config?.color ?? "white"}
     backgroundColor={config?.bgColor ?? "black"}>
+
     {config?.media}
   </Badge>
 }
-const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
+
+export const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
   const date = new Date(datetime)
   return <Badge width={"5rem"} fontWeight="normal">
     {date.toLocaleDateString("sv-SE")}
   </Badge>
-
 }
 
-
-const DefaultFeedItem: FC<{ feed: Item }> = ({ feed }) => {
-  return <Box>
-    <Stack>
-      <Flex style={{ gap: 4 }} py={2}>
-        <DateTime datetime={feed.datetime} />
-        <MediaBadge mediaId={feed.mediaId} />
-      </Flex>
-      <Box>
-        <Link href={feed.link}>
-          <Text fontWeight="bold">
-            {feed.title}
-          </Text>
-        </Link>
-      </Box>
-    </Stack>
-  </Box>
-}
-const LowPriorityFeedItem: FC<{ feed: Item }> = ({ feed }) => {
-  return <Box>
-    <Stack>
-      <Flex style={{ gap: 4 }} py={2}>
-        <DateTime datetime={feed.datetime} />
-        <MediaBadge mediaId={feed.mediaId} />
-      </Flex>
-      <Box>
-        <Link href={feed.link}>
-          <Text>
-            {feed.title}
-          </Text>
-        </Link>
-      </Box>
-    </Stack>
+export const DateTime2: FC<{ datetime: number }> = ({ datetime }) => {
+  const date = new Date(datetime)
+  return <Box fontSize="xs" fontWeight="normal">
+    {date.toLocaleDateString("sv-SE")}
   </Box>
 }
 
-export const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
+
+const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
   const config = getConfigByMedia(feed.mediaId)
+  const fontWeight = useMemo(() => config?.priority !== "low" ? "bold" : "normal", [config])
+  const fontSize = useMemo(() => config?.priority !== "low" ? "lg" : "sm", [config])
+  return <Stack p={4} >
+    <Flex style={{ gap: 4 }} py={2}>
+      {/* <DateTime datetime={feed.datetime} /> */}
+      <MediaBadge mediaId={feed.mediaId} />
+    </Flex>
+    <Box>
+      <Link href={feed.link}>
+        <Text fontWeight={fontWeight} fontSize={fontSize}>
+          {feed.title}
+        </Text>
+      </Link>
+    </Box>
+  </Stack >
+}
 
-  if (config?.priority === "low") {
-    return <LowPriorityFeedItem feed={feed} />
-  }
-  return <DefaultFeedItem feed={feed} />
+
+export const FeedGridItem: FC<{ feed: Item, isFirstItem: boolean }> = ({ feed, isFirstItem }) => {
+  const lineWidth = 2
+  return <Grid gridAutoFlow="column" gridTemplateColumns="1fr 10fr" gap={0}>
+    <VStack w="100px" gap={0} >
+      <Divider orientation="vertical" maxHeight={"45%"} borderWidth={isFirstItem ? 0 : lineWidth} />
+      <DateTime2 datetime={feed.datetime} />
+      <Divider orientation="vertical" maxHeight={"45%"} borderWidth={lineWidth} />
+    </VStack>
+    <Box p={2}>
+      <FeedItem feed={feed} />
+      {/* {i % 10 == 9 && <Divider />} */}
+    </Box>
+  </Grid>
 }
