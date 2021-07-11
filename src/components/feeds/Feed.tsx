@@ -1,53 +1,14 @@
-import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme, Button, Divider, Heading, SimpleGrid } from "@chakra-ui/react"
+import { Box, Tag, Grid, Stack, useTheme, Button, Divider, Heading, SimpleGrid } from "@chakra-ui/react"
 import React, { FC, useEffect, useState } from "react"
 import { Item } from "rss-parser"
 import useSWR from "swr"
-import { getConfigByMedia } from "../../lib/feed/rssConfig"
 import { chunk } from "../chunk"
+import { FeedItem } from "./MediaBadge"
 
 export const useFeedAll = (initFeeds: Item[]) => {
   return useSWR(`/api/feed`, {
     initialData: initFeeds
   })
-}
-
-const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
-  const config = getConfigByMedia(media)
-  return <Badge
-    borderRadius={8}
-    maxWidth={"8rem"}
-    px={"1rem"}
-    textAlign="center"
-    color={config?.color ?? "white"}
-    backgroundColor={config?.bgColor ?? "black"}>
-    {config?.media}
-  </Badge>
-}
-
-const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
-  const date = new Date(datetime)
-  return <Badge width={"5rem"} fontWeight="normal">
-    {date.toLocaleDateString("sv-SE")}
-  </Badge>
-
-}
-
-const Feed: FC<{ feed: Item }> = ({ feed }) => {
-  return <Box borderWidth={1} borderRadius={4} backgroundColor={"gray.100"} padding={4}>
-    <Box>
-      <Flex style={{ gap: 4 }} py={2}>
-        <DateTime datetime={feed.datetime} />
-        <MediaBadge mediaId={feed.mediaId} />
-      </Flex>
-      <Box>
-        <Link href={feed.link}>
-          <Text fontWeight="bold">
-            {feed.title}
-          </Text>
-        </Link>
-      </Box>
-    </Box>
-  </Box>
 }
 
 export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
@@ -66,7 +27,7 @@ export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
     <SimpleGrid spacing={4} >
       {data.slice(0, showFeedNum).map((d, i) => (
         <Box key={i}>
-          <Feed feed={d} />
+          <FeedItem feed={d} />
           {i % 10 == 9 && <Divider />}
         </Box>
       ))}

@@ -53,7 +53,7 @@ export const rssConfig: Config[] = [
     media: "zenn(scrap)",
     origin: "https://zenn.dev/terrierscript/scraps",
     bgColor: "#545c77",
-    color: "white"
+    color: "white",
   },
   {
     id: "blog",
@@ -68,3 +68,4 @@ export const getConfigByMedia = (media: string) => {
     return r.media === media || r.id === media
   })
 }
+
