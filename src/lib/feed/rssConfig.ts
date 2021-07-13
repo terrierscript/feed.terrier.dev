@@ -5,6 +5,7 @@ export type Config = {
   origin: string
   bgColor: string
   color?: string
+  priority?: "low" | "medium" | "high"
 }
 export const rssConfig: Config[] = [
   {
@@ -49,6 +50,14 @@ export const rssConfig: Config[] = [
     color: "white"
   },
   {
+    id: "zennScrap",
+    media: "zenn(scrap)",
+    origin: "https://zenn.dev/terrierscript/scraps",
+    bgColor: "#eeeeee",
+    color: "#545c77",
+    priority: "low"
+  },
+  {
     id: "blog",
     media: "blog",
     origin: "https://blog.terrier.dev/rss.xml",
@@ -61,3 +70,4 @@ export const getConfigByMedia = (media: string) => {
     return r.media === media || r.id === media
   })
 }
+

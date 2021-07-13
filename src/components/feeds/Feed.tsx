@@ -1,9 +1,9 @@
-import { Text, Badge, Box, Tag, Link, Flex, Grid, Stack, useTheme, Button, Divider, Heading, SimpleGrid } from "@chakra-ui/react"
-import React, { FC, useEffect, useState } from "react"
+import { Box, Stack, Button, Heading, SimpleGrid } from "@chakra-ui/react"
+import React, { FC, useState } from "react"
 import { Item } from "rss-parser"
 import useSWR from "swr"
 import { getConfigByMedia } from "../../lib/feed/rssConfig"
-import { chunk } from "../chunk"
+import { FeedGridItem } from "./FeedItem"
 
 export const useFeedAll = (initFeeds: Item[]) => {
   return useSWR(`/api/feed`, {
@@ -11,48 +11,23 @@ export const useFeedAll = (initFeeds: Item[]) => {
   })
 }
 
-const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
-  const config = getConfigByMedia(media)
-  return <Badge
-    borderRadius={8}
-    width={"5rem"}
-    textAlign="center"
-    color={config?.color ?? "white"}
-    backgroundColor={config?.bgColor ?? "black"}>
-    {config?.media}
-  </Badge>
+
+const Circle: FC<{ mediaId: string }> = ({ mediaId }) => {
+  const media = getConfigByMedia(mediaId)
+  const size = media?.priority === "low" ? 4 : 6
+  const padding = media?.priority === "low" ? 2 : 0
+  return <Box borderRadius={"50%"} h={size} w={size} p={padding}
+    bg={media?.bgColor}
+  />
 }
 
-const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
-  const date = new Date(datetime)
-  return <Badge width={"5rem"} fontWeight="normal">
-    {date.toLocaleDateString("sv-SE")}
-  </Badge>
 
-}
 
-const Feed: FC<{ feed: Item }> = ({ feed }) => {
-  return <Box borderWidth={1} borderRadius={4} backgroundColor={"gray.100"} padding={4}>
-    <Box>
-      <Flex style={{ gap: 4 }} py={2}>
-        <DateTime datetime={feed.datetime} />
-        <MediaBadge mediaId={feed.mediaId} />
-      </Flex>
-      <Box>
-        <Link href={feed.link}>
-          <Text fontWeight="bold">
-            {feed.title}
-          </Text>
-        </Link>
-      </Box>
-    </Box>
-  </Box>
-}
 
 export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
   // const [feeds, setFeeds] = useState<Item[]>(initFeeds ?? [])
   const { data } = useFeedAll(initFeeds)
-  const [showFeedNum, setShowFeedsNum] = useState(10)
+  const [showFeedNum, setShowFeedsNum] = useState(20)
   const showMore = () => {
     setShowFeedsNum(s => s + 10)
   }
@@ -63,13 +38,12 @@ export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
   return <Stack spacing={4}>
     <Heading>Recent Posts</Heading>
     <SimpleGrid spacing={4} >
-      {data.slice(0, showFeedNum).map((d, i) => (
-        <Box key={i}>
-          <Feed feed={d} />
-          {i % 10 == 9 && <Divider />}
-        </Box>
-      ))}
+      <Stack spacing={0}>
+        {data.slice(0, showFeedNum).map((d, i) => (
+          <FeedGridItem key={i} feed={d} isFirstItem={i === 0} />
+        ))}
+      </Stack>
       <Button onClick={() => showMore()}>Show more</Button>
     </SimpleGrid>
-  </Stack>
+  </Stack >
 }
