@@ -10920,10 +10920,10 @@ trim-repeated@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
-ts-migrate-plugins@^0.1.21:
-  version "0.1.21"
-  resolved "https://registry.yarnpkg.com/ts-migrate-plugins/-/ts-migrate-plugins-0.1.21.tgz#a22f650bbc3b2055ae22dcbc3a7761f8b587e6c3"
-  integrity sha512-BkVtfyWz0w6jqzmi9JqV2ec90BjcoBUDzBDjlrPZTn5wUQ1pG7sTsQJWFmcmBJ22DkhbKqvVq5+o1M/a8OZnPA==
+ts-migrate-plugins@^0.1.22:
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/ts-migrate-plugins/-/ts-migrate-plugins-0.1.22.tgz#38e31e94b0ceedab374d120d25acbffd368dc257"
+  integrity sha512-bmJKRtG7m1rW4AcJ92N79kCGl/gJPF4UPT0+e+3+4lUPiy0RHJ6uF8cIvCEMocQ2PkAzo39HJtOBhLGUMnYpsg==
   dependencies:
     eslint "^7.14.0"
     jscodeshift "^0.13.0"
@@ -10941,15 +10941,15 @@ ts-migrate-server@^0.1.20:
     typescript "4.2.4"
     updatable-log "^0.2.0"
 
-ts-migrate@^0.1.21:
-  version "0.1.21"
-  resolved "https://registry.yarnpkg.com/ts-migrate/-/ts-migrate-0.1.21.tgz#ffa69881717e844e4971c93aef732ce819d9c653"
-  integrity sha512-pHQLLg2Lx+d+7qGZKfIJH0AFK8KdU75bkdE0Zr+Yn6mWq2JcKKRwufIIb8EOuMd298l1BOIrR0PM27lbL1JmUg==
+ts-migrate@^0.1.22:
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/ts-migrate/-/ts-migrate-0.1.22.tgz#1c5f150f39fab674ed1ee957aeed95aafd7e2f33"
+  integrity sha512-SoxPHgkhpHkLi18QTNe4k9ngXZwyFB1/CAqBj9h+ya/GOWcfjqh6+nEIrO3gxZiaJ8tGD3tUq2EYMVEc8e/ZRA==
   dependencies:
     create-jest-runner "^0.5.3"
     json5 "^2.1.1"
     json5-writer "^0.1.8"
-    ts-migrate-plugins "^0.1.21"
+    ts-migrate-plugins "^0.1.22"
     ts-migrate-server "^0.1.20"
     typescript "4.2.4"
     updatable-log "^0.2.0"
