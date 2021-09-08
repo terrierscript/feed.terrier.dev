@@ -2,6 +2,7 @@
 name: Node.js CI
 
 on:
+  push:
   pull_request:
 
 jobs:
@@ -18,8 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
-      with:
-        cache: 'yarn'
+      # with:
+      #   cache: 'yarn'
     - run: yarn install
     - run: yarn tsc
     needs: install
@@ -28,8 +29,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
-      with:
-        cache: 'yarn'
+      # with:
+      #   cache: 'yarn'
     - run: yarn install
     - run: yarn build
     needs: install
