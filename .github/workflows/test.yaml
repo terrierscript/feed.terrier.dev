@@ -28,7 +28,7 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
-    - run: yarn --frozen-lockfile 
+    - run: yarn 
     - run: yarn tsc
     needs: install
   build:
@@ -39,7 +39,7 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
-    - run: yarn --frozen-lockfile
+    - run: yarn
     - run: yarn build
     needs: install
     
