@@ -1,13 +1,14 @@
 import { Box, Stack, Button, Heading, SimpleGrid } from "@chakra-ui/react"
 import React, { FC, useState } from "react"
 import { Item } from "rss-parser"
-import useSWR from "swr"
+import useSWRImmutable from "swr/immutable"
 import { getConfigByMedia } from "../../lib/feed/rssConfig"
 import { FeedGridItem } from "./FeedItem"
 
+const fetcher = (url: string) => fetch(url).then(r => r.json())
 export const useFeedAll = (initFeeds: Item[]) => {
-  return useSWR(`/api/feed`, {
-    initialData: initFeeds
+  return useSWRImmutable<Item[]>(`/api/feed`, fetcher, {
+    fallbackData: initFeeds
   })
 }
 
