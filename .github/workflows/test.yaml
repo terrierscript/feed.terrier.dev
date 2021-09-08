@@ -13,7 +13,13 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
-    - run: yarn --frozen-lockfile
+   - name: Validate cache
+      env:
+        # Use PnP and disable postinstall scripts as this just needs to
+        # populate the cache for the other jobs
+        YARN_NODE_LINKER: pnp
+        YARN_ENABLE_SCRIPTS: false
+      run: yarn --immutable
   tsc:
     runs-on: ubuntu-latest
     steps:
