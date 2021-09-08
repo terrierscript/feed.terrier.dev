@@ -1,0 +1,38 @@
+name: Node.js CI no immutable
+
+on:
+  pull_request:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+        cache: yarn
+    - run: yarn
+  tsc:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+        cache: yarn
+    - run: yarn 
+    - run: yarn tsc
+    needs: install
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+        cache: yarn
+    - run: yarn
+    - run: yarn build
+    needs: install
+    
