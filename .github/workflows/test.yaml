@@ -13,7 +13,7 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
-    - run: yarn --frozen-lockfile --verbose
+    - run: yarn --frozen-lockfile
   tsc:
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
-    - run: yarn --frozen-lockfile --verbose
+    - run: yarn --frozen-lockfile 
     - run: yarn tsc
     needs: install
   build:
@@ -33,7 +33,7 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
-    - run: yarn --frozen-lockfile --verbose
+    - run: yarn --frozen-lockfile
     - run: yarn build
     needs: install
     
