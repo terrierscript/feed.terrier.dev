@@ -14,11 +14,6 @@ jobs:
         node-version: 14.x
         cache: yarn
     - name: Validate cache
-      env:
-        # Use PnP and disable postinstall scripts as this just needs to
-        # populate the cache for the other jobs
-        YARN_NODE_LINKER: pnp
-        YARN_ENABLE_SCRIPTS: false
       run: yarn --immutable
   tsc:
     runs-on: ubuntu-latest
