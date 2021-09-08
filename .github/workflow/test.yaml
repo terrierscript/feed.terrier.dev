@@ -1,0 +1,37 @@
+
+name: Node.js CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        cache: 'yarn'
+    - run: yarn install
+  tsc:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        cache: 'yarn'
+    - run: yarn install
+    - run: yarn tsc
+    needs: install
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        cache: 'yarn'
+    - run: yarn install
+    - run: yarn build
+    needs: install
+    
