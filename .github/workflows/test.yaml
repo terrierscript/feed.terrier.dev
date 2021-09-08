@@ -13,7 +13,7 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
-   - name: Validate cache
+    - name: Validate cache
       env:
         # Use PnP and disable postinstall scripts as this just needs to
         # populate the cache for the other jobs
