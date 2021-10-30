@@ -13,7 +13,7 @@
     "@emotion/styled": "^11",
     "@octokit/rest": "^18.12.0",
     "axios": "^0.24.0",
-    "framer-motion": "^4",
+    "framer-motion": "^5",
     "gray-matter": "^4.0.3",
     "jest": "^26.4.2",
     "jimp": "^0.16.1",
