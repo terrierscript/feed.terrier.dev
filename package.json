@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^14.18.9",
-    "@types/react": "^16.14.21",
+    "@types/react": "^16.14.22",
     "ts-migrate": "^0.1.27",
     "typescript": "^4.5.5"
   }
