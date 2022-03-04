@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.8.5",
+    "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@octokit/rest": "^18.12.0",
