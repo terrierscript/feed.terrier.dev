@@ -15,7 +15,7 @@ export const parseZennScrap = async (url: string): Promise<FeedItem[]> => {
     const date = slug.split("-")
     return {
       title,
-      link: `https://zenn.dev/terrierscript/scrap/${slug}`,
+      link: `https://zenn.dev/terrierscript/scraps/${slug}`,
       date: new Date(createdAt)
       // description: topics.join(",")
     }
