@@ -26,7 +26,7 @@
     "react-spring": "^8.0.27",
     "rss-parser": "^3.9.0",
     "swr": "^1.2.2",
-    "vercel": "^24.0.0"
+    "vercel": "^24.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.18.12",
