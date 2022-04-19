@@ -14,6 +14,7 @@ export const loadAllForSSR = async (): Promise<FeedItemForSSR[]> => {
       const feeds = await parseMedia(config)
       return feeds.map((d: FeedItem) => {
         const { date, description, ...rest } = d
+        // console.log(config.id, date.getTime())
         return {
           ...rest,
           datetime: d.date.getTime(),
@@ -27,8 +28,15 @@ export const loadAllForSSR = async (): Promise<FeedItemForSSR[]> => {
     }
   }))
   const results = (await fetches).flat()
-  results.sort((a, b) => {
-    return b.datetime - a.datetime
+  const sorted = results.concat().sort((a, b) => {
+    if (!a.datetime) {
+      return 1
+    }
+    if (!b.datetime) {
+      return -1
+    }
+    return ((b.datetime ?? 0) - (a.datetime ?? 0)) > 0 ? 1 : -1
   })
-  return results.flat()
+  console.log(JSON.stringify(sorted, null, 2))
+  return sorted.flat()
 }
