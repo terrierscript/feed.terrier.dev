@@ -1,4 +1,4 @@
-import React, { FC, SFC } from "react"
+import React, { FC } from "react"
 import styled from "@emotion/styled"
 import { FaGithub, FaTwitter } from "react-icons/fa"
 

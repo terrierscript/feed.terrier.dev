@@ -1,9 +1,9 @@
 import { Box, Grid } from "@chakra-ui/react"
-import React, { FC } from "react"
+import React, { FC, PropsWithChildren } from "react"
 import { Footer } from "./Footer"
 import { Header } from "./header/HeaderBar"
 
-export const Layout: FC<{}> = ({ children }) => {
+export const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
   return <Box minWidth="400px" px="4">
     <Grid
       templateColumns="minmax(min-content,40vw)"
