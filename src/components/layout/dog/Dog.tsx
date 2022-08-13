@@ -50,8 +50,8 @@ export const Dog = (props: BoxProps) => {
     >
       <NextImage
         src={img}
-        width={600}
-        height={600}
+        width={300}
+        height={300}
         objectFit="cover" />
     </AminatedImg>
   )
