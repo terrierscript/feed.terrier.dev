@@ -53,16 +53,15 @@ const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
 
 
 export const FeedGridItem: FC<{ feed: Item, isFirstItem: boolean }> = ({ feed, isFirstItem }) => {
-  const lineWidth = 2
+  const lineWidth = 1
   return <Grid gridAutoFlow="column" gridTemplateColumns="1fr 10fr" gap={0}>
     <VStack w="100px" gap={0} >
-      <Divider orientation="vertical" maxHeight={"45%"} borderWidth={isFirstItem ? 0 : lineWidth} />
+      <Divider orientation="vertical" borderWidth={isFirstItem ? 0 : lineWidth} />
       <DateTime2 datetime={feed.datetime} />
-      <Divider orientation="vertical" maxHeight={"45%"} borderWidth={lineWidth} />
+      <Divider orientation="vertical" borderWidth={lineWidth} />
     </VStack>
     <Box p={2}>
       <FeedItem feed={feed} />
-      {/* {i % 10 == 9 && <Divider />} */}
     </Box>
   </Grid>
 }
