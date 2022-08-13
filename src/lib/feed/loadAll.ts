@@ -37,6 +37,6 @@ export const loadAllForSSR = async (): Promise<FeedItemForSSR[]> => {
     }
     return ((b.datetime ?? 0) - (a.datetime ?? 0)) > 0 ? 1 : -1
   })
-  console.log(JSON.stringify(sorted, null, 2))
+  // console.log(JSON.stringify(sorted, null, 2))
   return sorted.flat()
 }

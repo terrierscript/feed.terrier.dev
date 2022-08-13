@@ -52,7 +52,8 @@ export const rssConfig: Config[] = [
   {
     id: "zennScrap",
     media: "zenn(scrap)",
-    origin: "https://zenn.dev/terrierscript/scraps",
+    // origin: "https://zenn.dev/terrierscript/scraps",
+    origin: "https://zenn.dev/api/scraps?username=terrierscript&count=350&order=created_at",
     bgColor: "#eeeeee",
     color: "#545c77",
     priority: "low"

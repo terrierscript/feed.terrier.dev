@@ -2,6 +2,7 @@ import axios from "axios"
 import { FeedItem } from "../Item"
 import { parse } from 'node-html-parser'
 
+/** @deprecated */
 export const parseZennScrap = async (url: string): Promise<FeedItem[]> => {
   const { data } = await axios.get(url, {
     responseType: "document"
@@ -11,6 +12,7 @@ export const parseZennScrap = async (url: string): Promise<FeedItem[]> => {
   )
   const data2 = root.querySelector("#__NEXT_DATA__")
   const data3 = JSON.parse(data2?.rawText ?? "")
+  console.log(data3.props.pageProps)
   return data3.props.pageProps.scraps.map((
     item: any) => {
     const { title, slug, topics, createdAt, ...rest } = item
