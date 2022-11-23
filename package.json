@@ -16,7 +16,7 @@
     "gray-matter": "^4.0.3",
     "next": "^12.3.3",
     "node-html-parser": "^6.1.4",
-    "parse5": "^7.1.1",
+    "parse5": "^7.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
