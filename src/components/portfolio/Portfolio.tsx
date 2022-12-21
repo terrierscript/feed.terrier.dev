@@ -43,6 +43,7 @@ export const Portfolio = () => {
       </Grid>
       <Box>
         <AvaterLinks />
+        <Box p={2} fontSize="sm">仕事依頼・ご相談等についてございましたらTwitterのDMまでご連絡ください</Box>
       </Box>
     </Grid >
   </Box>
