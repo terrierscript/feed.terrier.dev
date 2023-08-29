@@ -5,6 +5,7 @@ import { Header } from "./header/HeaderBar"
 
 export const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
   return <Box minWidth="400px" px="4">
+    <Header />
     <Grid
       templateColumns="minmax(min-content,40vw)"
       justifyContent="center"
@@ -13,7 +14,6 @@ export const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
       <Box
       // maxWidth="46rem" mx="auto"
       >
-        <Header />
         {children}
         <Footer author="terrierscript" />
       </Box>
