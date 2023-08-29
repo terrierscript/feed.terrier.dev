@@ -8,6 +8,12 @@ const DogDynamic = dynamic(
   () => import("../layout/dog/Dog").then((mod) => mod.Dog), {
   ssr: false
 })
+export const DogScrollDynamic = dynamic(
+  // @ts-ignore
+  () => import("../layout/dog/DogScroll").then((mod) => mod.DogScroll), {
+  ssr: false
+})
+
 export const Hero = () => {
   const size = "100%"
   // @ts-ignore
