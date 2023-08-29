@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
-import { Box, BoxProps } from "@chakra-ui/react"
+import { Box, Image, BoxProps } from "@chakra-ui/react"
 import NextImage from 'next/image'
 
 import { randomPretty } from "./randomPretty"
@@ -10,10 +10,12 @@ import Head from "next/head"
 const scale = keyframes`
 `
 const rotate360 = keyframes`
-  0% { transform: rotate(0deg)      }
-  10% { transform: rotate(0deg)     }
-  50% { transform: rotate(360deg)    }
-  100% { transform: rotate(720deg)   }
+  0% { transform: rotate(0deg)               scale(1)  }
+  5% { transform: rotate(auto)               scale(0.6)  }
+  25% { transform: rotate(calc(360deg))      scale(0.6)   }
+  50% { transform: rotate(calc(360deg * 2))  scale(0.6)   }
+  75% { transform: rotate(calc(360deg * 3))  scale(0.6)   }
+  100% { transform: rotate(calc(360deg * 4)) scale(0.6)   }
 `
 
 // const RotateImg = styled(Box)`
@@ -43,7 +45,6 @@ export const DogScroll = (props: BoxProps) => {
       <Head>
         <style>
           {rotate360.styles}
-          {scale.styles}
         </style>
       </Head>
       {/* <Box display={"hidden"} animation={`${rotate360} 1s`}></Box> */}
@@ -51,7 +52,7 @@ export const DogScroll = (props: BoxProps) => {
         // animation={rotate360}
         sx={{
           "animation-timing-function": "linear",
-          "animation-name": `${rotate360.name} ,${scale.name}`,
+          "animation-name": `${rotate360.name} `,
           "animation-timeline": "--page-scroll"
         }}
         // style={springProps}
@@ -63,13 +64,12 @@ export const DogScroll = (props: BoxProps) => {
       // layout={"fill"}
       >
         <Box
-          display={"flex"}
           overflow="hidden"
           borderRadius={"100%"}
-          width={size}
           height={size}
+          width={size}
         >
-          <NextImage
+          <Image
             src={img}
             width={size}
             height={size}
