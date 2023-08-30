@@ -6,12 +6,12 @@ import { randomPretty } from "./randomPretty"
 import Head from "next/head"
 
 const rotate360 = keyframes`
-  0% { transform: rotate(0deg)               scale(1)  }
+  0% { transform: rotate(0turn)               scale(1)  }
   5% { transform: rotate(auto)               scale(0.6)  }
-  25% { transform: rotate(calc(360deg))      scale(0.6)   }
-  50% { transform: rotate(calc(360deg * 2))  scale(0.6)   }
-  75% { transform: rotate(calc(360deg * 3))  scale(0.6)   }
-  100% { transform: rotate(calc(360deg * 4)) scale(0.6)   }
+  25% { transform: rotate(1turn)      scale(0.6)   }
+  50% { transform: rotate(2turn)  scale(0.6)   }
+  75% { transform: rotate(3turn)  scale(0.6)   }
+  100% { transform: rotate(4turn) scale(0.6)   }
 `
 
 export const DogScroll = (props: BoxProps) => {
@@ -27,6 +27,7 @@ export const DogScroll = (props: BoxProps) => {
       <Box
         sx={{
           "animation-timing-function": "linear",
+          "animation duration": "1ms",
           "animation-name": `${rotate360.name} `,
           "animation-timeline": "--page-scroll"
         }}

@@ -23,7 +23,7 @@ const logoAnimation = keyframes`
 
 const blockAnimation = keyframes`
 0% { padding-bottom: 20px; }
-10% { padding-bottom: 80px;}
+10% { padding-bottom: ４0px;}
 
 `
 
@@ -39,6 +39,7 @@ export const Header = () => {
       sx={{
         "mask-image": "linear-gradient(#000f 0%, #000f 75%, #0003 90%)",
         "animation-timing-function": "linear",
+        "animation duration": "1ms",
         "animation-name": `${blockAnimation.name} `,
         "animation-timeline": "--page-scroll"
       }}>
