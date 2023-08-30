@@ -4,7 +4,7 @@ export const customTheme = extendTheme({
   styles: {
     global: {
       'html': {
-        "scroll-timeline-name": "--page-scroll"
+        "scrollTimelineName": "--page-scroll"
       }
     }
   }

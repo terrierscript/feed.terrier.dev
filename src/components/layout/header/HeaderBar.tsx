@@ -1,8 +1,9 @@
 import { Box, Center, HStack, Heading, Link, keyframes } from "@chakra-ui/react"
 import styled from "@emotion/styled"
-import React from "react"
+import React, { RefObject, useEffect, useMemo, useRef, useState } from "react"
 import { DogScrollDynamic } from "../../portfolio/Hero"
 import Head from "next/head"
+import { useMotionValueEvent, useScroll } from "framer-motion"
 export const TITLE_BOLD_COLOR = "#111"
 
 export const impactFont = "Quicksand"
@@ -23,9 +24,37 @@ const logoAnimation = keyframes`
 
 const blockAnimation = keyframes`
 0% { padding-bottom: 20px; }
-10% { padding-bottom: ４0px;}
-
+10% { padding-bottom: 40px;}
 `
+
+// const useSafariPolyfill = (refs: RefObject<HTMLElement>[]) => {
+//   const needPolyfill: boolean = useMemo(() => {
+//     // @ts-ignore
+//     return (typeof ScrollTimeline !== "undefined")
+//   }, [])
+//   const { scrollYProgress } = useScroll()
+//   const [over10Percent, setOver10Percent] = useState(false)
+//   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+//     setOver10Percent(latest > 0.1)
+//   })
+//   useEffect(() => {
+
+//     refs.map(ref => {
+
+//       if (!ref.current) return
+//       if (!needPolyfill) {
+//         return
+//       }
+//       if (over10Percent) {
+//         ref.current
+//         ref.current.style.animationPlayState = "paused"
+//       } else {
+//         ref.current.style.animationPlayState = "running"
+//       }
+//     })
+//   }, [needPolyfill, over10Percent])
+
+// }
 
 export const Header = () => {
   return (
@@ -37,11 +66,11 @@ export const Header = () => {
       backdropFilter={"auto"}
       backdropBlur={"6px"}
       sx={{
-        "mask-image": "linear-gradient(#000f 0%, #000f 75%, #0003 90%)",
-        "animation-timing-function": "linear",
-        "animation duration": "1ms",
-        "animation-name": `${blockAnimation.name} `,
-        "animation-timeline": "--page-scroll"
+        "maskImage": "linear-gradient(#000f 0%, #000f 75%, #0003 90%)",
+        "animationTimingFunction": "linear",
+        "animationDuration": "1ms",
+        "animationFillMode": "forwards",
+        "animationName": `${blockAnimation.name} `,
       }}>
 
       <Head>
@@ -58,9 +87,11 @@ export const Header = () => {
             <Logo>
               <Heading
                 sx={{
-                  "animation-timing-function": "linear",
-                  "animation-name": `${logoAnimation.name} `,
-                  "animation-timeline": "--page-scroll"
+                  "animationTimingFunction": "linear",
+                  "animationDuration": "1ms",
+                  "animationFillMode": "forwards",
+                  "animationName": `${logoAnimation.name} `,
+                  "animationTimeline": "--page-scroll"
                 }}>terrier.dev</Heading>
             </Logo>
           </Box>

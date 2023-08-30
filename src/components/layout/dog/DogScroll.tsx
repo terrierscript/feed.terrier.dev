@@ -26,10 +26,11 @@ export const DogScroll = (props: BoxProps) => {
       </Head>
       <Box
         sx={{
-          "animation-timing-function": "linear",
-          "animation duration": "1ms",
-          "animation-name": `${rotate360.name} `,
-          "animation-timeline": "--page-scroll"
+          "animationTimingFunction": "linear",
+          "animationDuration": "1ms",
+          "animationFillMode": "forwards",
+          "animationName": `${rotate360.name} `,
+          "animationTimeline": "--page-scroll"
         }}
         // style={springProps}
         onClick={() => {
