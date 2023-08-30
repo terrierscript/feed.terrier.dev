@@ -22,7 +22,7 @@
     "react-icons": "^4.10.1",
     "react-spring": "^9.7.2",
     "rss-parser": "^3.9.0",
-    "swr": "^2.2.1"
+    "swr": "^2.2.2"
   },
   "devDependencies": {
     "@types/node": "^18.17.11",
