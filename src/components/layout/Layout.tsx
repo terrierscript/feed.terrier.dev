@@ -4,7 +4,7 @@ import { Footer } from "./Footer"
 import { Header } from "./header/HeaderBar"
 
 export const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
-  return <Box minWidth="400px" px="4">
+  return <Box minWidth="400px" >
     <Header />
     <Grid
       templateColumns="minmax(min-content,40vw)"
