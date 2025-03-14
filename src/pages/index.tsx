@@ -1,7 +1,7 @@
-import { Box } from '@chakra-ui/react'
 import React from 'react'
 import { Feeds } from "../components/mantine/feeds/Feed"
-import { Portfolio } from '../components/portfolio/Portfolio'
+import { Portfolio } from '../components/mantine/portfolio/Portfolio'
+import { Box } from '@mantine/core'
 import { loadAllForSSR } from '../lib/feed/loadAll'
 
 export async function getServerSideProps() {
