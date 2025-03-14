@@ -14,13 +14,13 @@ function MyApp({
   pageProps
 }: any) {
   return (
-    <ChakraProvider theme={customTheme}>
-      <MantineProvider theme={mantineTheme} defaultColorScheme="auto">
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </MantineProvider>
-    </ChakraProvider>
+    // <ChakraProvider theme={customTheme}>
+    <MantineProvider theme={mantineTheme} defaultColorScheme="auto">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </MantineProvider>
+    // </ChakraProvider>
   )
 }
 

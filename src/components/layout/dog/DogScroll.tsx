@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-// import { keyframes } from "@emotion/react"
-import { Box, Image, BoxProps, keyframes } from "@chakra-ui/react"
+import { keyframes } from "@emotion/react"
+import { Box, BoxProps, Image } from "@mantine/core"
 
 import { randomPretty } from "./randomPretty"
 import Head from "next/head"
@@ -15,7 +15,7 @@ const rotate360 = keyframes`
 `
 
 export const DogScroll = (props: BoxProps) => {
-  const size = 20
+  const size = 80
   const [img, setImg] = useState(randomPretty())
   return (
     <>
@@ -25,30 +25,30 @@ export const DogScroll = (props: BoxProps) => {
         </style>
       </Head>
       <Box
-        sx={{
-          "animationTimingFunction": "linear",
-          "animationDuration": "1ms",
-          "animationFillMode": "forwards",
-          "animationName": `${rotate360.name} `,
-          "animationTimeline": "--page-scroll"
+        style={{
+          animationTimingFunction: "linear",
+          animationDuration: "1ms",
+          animationFillMode: "forwards",
+          animationName: `${rotate360.name} `,
+          animationTimeline: "--page-scroll"
         }}
-        // style={springProps}
         onClick={() => {
           setImg(randomPretty())
         }}
-      // layout={"fill"}
       >
         <Box
-          overflow="hidden"
-          borderRadius={"100%"}
-          height={size}
-          width={size}
+          style={{
+            overflow: "hidden",
+            borderRadius: "100%"
+          }}
+          h={size}
+          w={size}
         >
           <Image
             src={img}
-            width={size}
-            height={size}
-            objectFit="cover" />
+            w={size}
+            h={size}
+            fit="cover" />
         </Box>
       </Box>
     </>
