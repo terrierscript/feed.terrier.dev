@@ -18,9 +18,10 @@ const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
   </Badge >
 }
 
-export const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
+export const DateTime: FC<{ datetime: number, media: string }> = ({ datetime, media }) => {
   const date = new Date(datetime)
-  return <Badge maw={100} fw="normal" c="dark.9" bg="gray.2">
+  const config = getConfigByMedia(media)
+  return <Badge maw={100} fw="normal" c={config?.color === "white" ? "dark.9" : config?.color ?? "dark.9"} bg={config?.bgColor ?? "gray.2"}>
     {date.toLocaleDateString("sv-SE")}
   </Badge>
 }
@@ -62,8 +63,8 @@ export const FeedGridItem: FC<{ feed: Item }> = ({ feed }) => {
       }
       title={<Stack gap="xs">
         <Flex gap="sm">
+          <DateTime datetime={feed.datetime} media={feed.mediaId} />
           <MediaBadge mediaId={feed.mediaId} />
-          <DateTime datetime={feed.datetime} />
         </Flex>
       </Stack>}
     >
