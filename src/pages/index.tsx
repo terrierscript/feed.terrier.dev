@@ -1,6 +1,6 @@
 import React from 'react'
-import { Feeds } from "../components/mantine/feeds/Feed"
-import { Portfolio } from '../components/mantine/portfolio/Portfolio'
+import { Feeds } from "../components/layout/feeds/Feed"
+import { Portfolio } from '../components/portfolio/Portfolio'
 import { Box } from '@mantine/core'
 import { loadAllForSSR } from '../lib/feed/loadAll'
 
