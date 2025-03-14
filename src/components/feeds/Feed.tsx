@@ -1,4 +1,5 @@
-import { Box, Stack, Button, Heading, SimpleGrid } from "@chakra-ui/react"
+"use client"
+import { Box, Stack, Button, Title, Timeline } from "@mantine/core"
 import React, { FC, useState } from "react"
 import { Item } from "rss-parser"
 import useSWRImmutable from "swr/immutable"
@@ -12,21 +13,20 @@ export const useFeedAll = (initFeeds: Item[]) => {
   })
 }
 
-
 const Circle: FC<{ mediaId: string }> = ({ mediaId }) => {
   const media = getConfigByMedia(mediaId)
-  const size = media?.priority === "low" ? 4 : 6
-  const padding = media?.priority === "low" ? 2 : 0
-  return <Box borderRadius={"50%"} h={size} w={size} p={padding}
-    bg={media?.bgColor}
-  />
+  const size = media?.priority === "low" ? 16 : 24 // Mantineはpxベースなのでサイズを調整
+  const padding = media?.priority === "low" ? 8 : 0
+  return <Box style={{
+    borderRadius: "50%",
+    height: size,
+    width: size,
+    padding,
+    backgroundColor: media?.bgColor
+  }} />
 }
 
-
-
-
 export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
-  // const [feeds, setFeeds] = useState<Item[]>(initFeeds ?? [])
   const { data } = useFeedAll(initFeeds)
   const [showFeedNum, setShowFeedsNum] = useState(20)
   const showMore = () => {
@@ -36,15 +36,13 @@ export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
     return <div>loading</div>
   }
 
-  return <Stack spacing={4}>
-    <Heading>Recent Posts</Heading>
-    <SimpleGrid spacing={4} >
-      <Stack spacing={0}>
-        {data.slice(0, showFeedNum).map((d, i) => (
-          <FeedGridItem key={i} feed={d} isFirstItem={i === 0} />
-        ))}
-      </Stack>
-      <Button onClick={() => showMore()}>Show more</Button>
-    </SimpleGrid>
-  </Stack >
+  return <Stack gap="md">
+    <Title order={2}>Recent Posts</Title>
+    <Timeline active={showFeedNum} bulletSize={24} lineWidth={2}>
+      {data.slice(0, showFeedNum).map((d, i) => (
+        <FeedGridItem key={i} feed={d} />
+      ))}
+    </Timeline>
+    <Button onClick={() => showMore()}>Show more</Button>
+  </Stack>
 }

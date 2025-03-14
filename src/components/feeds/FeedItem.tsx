@@ -1,4 +1,5 @@
-import { Text, Badge, Box, Link, Flex, HStack, Stack, Divider, Grid, VStack } from "@chakra-ui/react"
+"use client"
+import { Text, Badge, Box, Stack, Flex, Anchor, Timeline } from "@mantine/core"
 import React, { FC, useMemo } from "react"
 import { Item } from "rss-parser"
 import { getConfigByMedia } from "../../lib/feed/rssConfig"
@@ -6,62 +7,68 @@ import { getConfigByMedia } from "../../lib/feed/rssConfig"
 const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
   const config = getConfigByMedia(media)
   return <Badge
-    borderRadius={8}
-    maxWidth={"8rem"}
-    px={"1rem"}
-    textAlign="center"
-    color={config?.color ?? "white"}
-    backgroundColor={config?.bgColor ?? "black"}>
-
+    radius="md"
+    style={{ maxWidth: "8rem" }}
+    px="md"
+    ta="center"
+    c={config?.color === "white" ? "dark.9" : config?.color ?? "dark.9"}
+    bg={config?.bgColor ?? "gray.2"}
+  >
     {config?.media}
-  </Badge>
+  </Badge >
 }
 
-export const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
+export const DateTime: FC<{ datetime: number, media: string }> = ({ datetime, media }) => {
   const date = new Date(datetime)
-  return <Badge width={"5rem"} fontWeight="normal">
+  const config = getConfigByMedia(media)
+  return <Badge maw={100} fw="normal" c={config?.color === "white" ? "dark.9" : config?.color ?? "dark.9"} bg={config?.bgColor ?? "gray.2"}>
     {date.toLocaleDateString("sv-SE")}
   </Badge>
 }
 
 export const DateTime2: FC<{ datetime: number }> = ({ datetime }) => {
   const date = new Date(datetime)
-  return <Box fontSize="xs" fontWeight="normal">
+  return <Box fz="xs" fw="normal">
     {date.toLocaleDateString("sv-SE")}
   </Box>
 }
-
 
 const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
   const config = getConfigByMedia(feed.mediaId)
   const fontWeight = useMemo(() => config?.priority !== "low" ? "bold" : "normal", [config])
   const fontSize = useMemo(() => config?.priority !== "low" ? "lg" : "sm", [config])
-  return <Stack p={4} >
-    <Flex style={{ gap: 4 }} py={2}>
-      {/* <DateTime datetime={feed.datetime} /> */}
-      <MediaBadge mediaId={feed.mediaId} />
-    </Flex>
+
+  return <Stack p="md">
     <Box>
-      <Link href={feed.link}>
-        <Text fontWeight={fontWeight} fontSize={fontSize}>
+      <Anchor href={feed.link}>
+        <Text fw={fontWeight} fz={fontSize}>
           {feed.title}
         </Text>
-      </Link>
+      </Anchor>
     </Box>
-  </Stack >
+  </Stack>
 }
 
-
-export const FeedGridItem: FC<{ feed: Item, isFirstItem: boolean }> = ({ feed, isFirstItem }) => {
-  const lineWidth = 1
-  return <Grid gridAutoFlow="column" gridTemplateColumns="1fr 10fr" gap={0}>
-    <VStack w="100px" gap={0} >
-      <Divider orientation="vertical" borderWidth={isFirstItem ? 0 : lineWidth} />
-      <DateTime2 datetime={feed.datetime} />
-      <Divider orientation="vertical" borderWidth={lineWidth} />
-    </VStack>
-    <Box p={2}>
+export const FeedGridItem: FC<{ feed: Item }> = ({ feed }) => {
+  const config = getConfigByMedia(feed.mediaId)
+  return (
+    <Timeline.Item
+      bullet={
+        <Box style={{
+          borderRadius: "50%",
+          backgroundColor: config?.bgColor ?? "gray.2",
+          width: "100%",
+          height: "100%"
+        }} />
+      }
+      title={<Stack gap="xs">
+        <Flex gap="sm">
+          <DateTime datetime={feed.datetime} media={feed.mediaId} />
+          <MediaBadge mediaId={feed.mediaId} />
+        </Flex>
+      </Stack>}
+    >
       <FeedItem feed={feed} />
-    </Box>
-  </Grid>
+    </Timeline.Item>
+  )
 }

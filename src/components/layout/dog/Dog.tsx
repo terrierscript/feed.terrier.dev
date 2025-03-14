@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
-import { Box, BoxProps } from "@chakra-ui/react"
 import NextImage from 'next/image'
 
 import { randomPretty } from "./randomPretty"
@@ -15,7 +14,7 @@ const rotate360 = keyframes`
     transform: rotate(360deg);
   }
 `
-const RotateImg = styled(Box)`
+const RotateImg = styled.div`
   vertical-align: middle;
   animation: ${rotate360} 6s linear infinite;
   animation-play-state: paused;
@@ -26,7 +25,7 @@ const RotateImg = styled(Box)`
 
 const AminatedImg = animated(RotateImg)
 // const Animated
-export const Dog = (props: BoxProps) => {
+export const Dog = (props: React.HTMLAttributes<HTMLDivElement>) => {
   // const springProps = useSpring({
   //   to: { opacity: 0 },
   //   from: { opacity: 1 }
@@ -45,18 +44,21 @@ export const Dog = (props: BoxProps) => {
       }}
     // layout={"fill"}
     >
-      <Box
-        display={"flex"}
-        overflow="hidden"
-        borderRadius={"100%"}
+      <div
+        style={{
+          display: "flex",
+          overflow: "hidden",
+          borderRadius: "100%"
+        }}
         {...props}
       >
         <NextImage
           src={img}
           width={300}
           height={300}
-          objectFit="cover" />
-      </Box>
+          objectFit="cover"
+          alt="Random pretty dog" />
+      </div>
     </AminatedImg>
   )
 }

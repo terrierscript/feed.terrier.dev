@@ -13,6 +13,10 @@ const FooterContainer = styled.footer`
 const LinkIcon = styled.a`
   font-size: 1.5em;
   padding: 0 0.2em;
+  color: #262626;
+  &:hover {
+    color: #404040;
+  }
 `
 
 const Name = styled.div`

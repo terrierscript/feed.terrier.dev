@@ -1,60 +1,49 @@
-import { Avatar, Box, Grid, Stack, Heading } from "@chakra-ui/react"
+"use client"
+import { Avatar, Box, SimpleGrid, Stack, Group, Title } from "@mantine/core"
 import React from "react"
-import { Hero } from "./Hero"
 import { Links } from "./Link"
 
 const avater =
   "https://ja.gravatar.com/userimage/90616865/8a8d3f96f2d0be4c04607273030e1e17.png"
 
 const AvaterItem = () => {
-
-  return <Stack isInline align="center">
-    <Avatar src={avater} backgroundColor="white" />
+  return <Group>
+    <Avatar src={avater} bg="white" />
     <Box>
-      <Heading size="md">@terrierscript</Heading>
+      <Title order={3}>@terrierscript</Title>
     </Box>
+  </Group>
+}
+
+const AvaterLinks = () => {
+  return <Stack gap="md">
+    <Title order={2}>About me</Title>
+    <AvaterItem />
+    <Title order={3}>Links</Title>
+    <Links />
   </Stack>
 }
-const AvaterLinks = () => {
-  return <Grid gap={4}
-  // justifyContent="center"
-  >
-    <Heading size="lg">About me</Heading>
-    <AvaterItem />
-    <Heading size="md">Links</Heading>
-    <Links />
-  </Grid>
 
-}
 export const Portfolio = () => {
   const size = `min(32vw, 240px)`
-  return <Box py={8}>
-    <Grid templateColumns={`${size} min(32vw, 240px)`} gap={8}
-      // alignItems="center"
-      justifyContent="space-evenly"
-      justifyItems="center"
+  return <Box py="lg">
+    <SimpleGrid cols={2} spacing="lg"
+      style={{
+        maxWidth: `calc(${size} * 2)`,
+        margin: '0 auto'
+      }}
     >
       <Stack>
-        <Heading size="md">About me</Heading>
+        <Title order={3}>About me</Title>
         <AvaterItem />
       </Stack>
       <Stack>
-        <Heading size="md">Links</Heading>
+        <Title order={3}>Links</Title>
         <Links />
       </Stack>
-      {/* <Grid
-        alignSelf="center"
-        templateColumns={size}
-        autoRows={size}
-        alignItems="center"
-        justifyItems="center"
-      >
-        <Hero />
-      </Grid> */}
-    </Grid >
+    </SimpleGrid>
     <Box>
-      {/* <AvaterLinks /> */}
-      <Box p={2} fontSize="sm">仕事依頼・ご相談等についてございましたらTwitterのDMまでご連絡ください</Box>
+      <Box p="sm" fz="sm">仕事依頼・ご相談等についてございましたらTwitterのDMまでご連絡ください</Box>
     </Box>
   </Box>
 }

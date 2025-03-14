@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react"
 import React from "react"
 import dynamic from "next/dynamic"
 // import { Dog } from "../layout/dog/Dog"

@@ -1,4 +1,5 @@
-import { Box, Center, HStack, Heading, Link, keyframes } from "@chakra-ui/react"
+import { Box, Center, Group, Title, Anchor } from "@mantine/core"
+import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
 import React, { RefObject, useEffect, useMemo, useRef, useState } from "react"
 import { DogScrollDynamic } from "../../portfolio/Hero"
@@ -9,12 +10,19 @@ export const TITLE_BOLD_COLOR = "#111"
 export const impactFont = "Quicksand"
 
 
-const Logo = styled(Link)`
-  text-decoration: none;
-  font-weight: bold;
-  font-family: ${impactFont};
-  color: ${TITLE_BOLD_COLOR};
-`
+const LogoLink = ({ children }: { children: React.ReactNode }) => (
+  <Anchor
+    component="div"
+    style={{
+      textDecoration: "none",
+      fontWeight: "bold",
+      fontFamily: impactFont,
+      color: TITLE_BOLD_COLOR
+    }}
+  >
+    {children}
+  </Anchor>
+)
 
 const logoAnimation = keyframes`
   0% { font-size: 3.5em; color: black; padding-left:16px; }
@@ -58,19 +66,22 @@ const blockAnimation = keyframes`
 
 export const Header = () => {
   return (
-    <Box p={4} justifyContent="center" textAlign="center" position="sticky" top={0} zIndex={"sticky"}
-      h="100%"
-      bg={
-        "linear-gradient(#ffff 25%, #fff9 75%, #fff0 100%)"
-      }
-      backdropFilter={"auto"}
-      backdropBlur={"6px"}
-      sx={{
-        "maskImage": "linear-gradient(#000f 0%, #000f 75%, #0003 90%)",
-        "animationTimingFunction": "linear",
-        "animationDuration": "1ms",
-        "animationFillMode": "forwards",
-        "animationName": `${blockAnimation.name} `,
+    <Box
+      p="md"
+      style={{
+        justifyContent: "center",
+        textAlign: "center",
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        height: "100%",
+        background: "linear-gradient(#ffff 25%, #fff9 75%, #fff0 100%)",
+        backdropFilter: "blur(6px)",
+        maskImage: "linear-gradient(#000f 0%, #000f 75%, #0003 90%)",
+        animationTimingFunction: "linear",
+        animationDuration: "1ms",
+        animationFillMode: "forwards",
+        animationName: `${blockAnimation.name}`
       }}>
 
       <Head>
@@ -80,22 +91,23 @@ export const Header = () => {
         </style>
       </Head>
       <Center>
-        <HStack >
+        <Group>
           <DogScrollDynamic />
-          <Box
-          >
-            <Logo>
-              <Heading
-                sx={{
-                  "animationTimingFunction": "linear",
-                  "animationDuration": "1ms",
-                  "animationFillMode": "forwards",
-                  "animationName": `${logoAnimation.name} `,
-                  "animationTimeline": "--page-scroll"
-                }}>terrier.dev</Heading>
-            </Logo>
+          <Box>
+            <LogoLink>
+              <Title
+                style={{
+                  animationTimingFunction: "linear",
+                  animationDuration: "1ms",
+                  animationFillMode: "forwards",
+                  animationName: `${logoAnimation.name}`,
+                  animationTimeline: "--page-scroll"
+                }}>
+                terrier.dev
+              </Title>
+            </LogoLink>
           </Box>
-        </HStack>
+        </Group>
       </Center>
     </Box>
   )
