@@ -8,7 +8,14 @@ export const mantineTheme = createTheme({
   components: {
     Anchor: {
       defaultProps: {
-        c: 'dark'  // リンクの色を黒に設定
+        color: '#262626'  // リンクの色を黒（brandカラーパレットの最も暗い色）に設定
+      },
+      styles: {
+        root: {
+          '&:hover': {
+            color: '#404040'  // hover時は少し明るい色に
+          }
+        }
       }
     },
     Badge: {
