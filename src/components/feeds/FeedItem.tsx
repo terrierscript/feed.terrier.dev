@@ -2,7 +2,7 @@
 import { Text, Badge, Box, Stack, Flex, Anchor, Timeline } from "@mantine/core"
 import React, { FC, useMemo } from "react"
 import { Item } from "rss-parser"
-import { getConfigByMedia } from "../../../lib/feed/rssConfig"
+import { getConfigByMedia } from "../../lib/feed/rssConfig"
 
 const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
   const config = getConfigByMedia(media)

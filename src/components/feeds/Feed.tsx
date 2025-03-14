@@ -3,7 +3,7 @@ import { Box, Stack, Button, Title, Timeline } from "@mantine/core"
 import React, { FC, useState } from "react"
 import { Item } from "rss-parser"
 import useSWRImmutable from "swr/immutable"
-import { getConfigByMedia } from "../../../lib/feed/rssConfig"
+import { getConfigByMedia } from "../../lib/feed/rssConfig"
 import { FeedGridItem } from "./FeedItem"
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
