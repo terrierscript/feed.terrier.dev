@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "@emotion/styled"
 import { FaGithub, FaTwitter } from "react-icons/fa"
-import { Anchor } from "@mantine/core"
+import { Anchor, AnchorProps } from "@mantine/core"
 
 const FooterContainer = styled.footer`
   /* background: #f0f0f0; */
@@ -12,7 +12,7 @@ const FooterContainer = styled.footer`
   line-height: 1.5em;
 `
 
-const LinkIcon = (props: React.ComponentProps<typeof Anchor>) => (
+const LinkIcon = (props: AnchorProps) => (
   <Anchor
     {...props}
     style={{
