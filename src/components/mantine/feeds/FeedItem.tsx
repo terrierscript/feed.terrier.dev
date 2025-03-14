@@ -1,5 +1,5 @@
 "use client"
-import { Text, Badge, Box, Stack, Divider, Grid, Flex, Anchor } from "@mantine/core"
+import { Text, Badge, Box, Stack, Flex, Anchor, Timeline } from "@mantine/core"
 import React, { FC, useMemo } from "react"
 import { Item } from "rss-parser"
 import { getConfigByMedia } from "../../../lib/feed/rssConfig"
@@ -11,15 +11,16 @@ const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
     style={{ maxWidth: "8rem" }}
     px="md"
     ta="center"
-    color={config?.color ?? "white"}
-    bg={config?.bgColor ?? "black"}>
+    c={config?.color === "white" ? "dark.9" : config?.color ?? "dark.9"}
+    bg={config?.bgColor ?? "gray.2"}
+  >
     {config?.media}
-  </Badge>
+  </Badge >
 }
 
 export const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
   const date = new Date(datetime)
-  return <Badge w="5rem" fw="normal">
+  return <Badge maw={100} fw="normal" c="dark.9" bg="gray.2">
     {date.toLocaleDateString("sv-SE")}
   </Badge>
 }
@@ -37,9 +38,6 @@ const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
   const fontSize = useMemo(() => config?.priority !== "low" ? "lg" : "sm", [config])
 
   return <Stack p="md">
-    <Flex gap="sm" py="sm">
-      <MediaBadge mediaId={feed.mediaId} />
-    </Flex>
     <Box>
       <Anchor href={feed.link}>
         <Text fw={fontWeight} fz={fontSize}>
@@ -50,20 +48,26 @@ const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
   </Stack>
 }
 
-export const FeedGridItem: FC<{ feed: Item, isFirstItem: boolean }> = ({ feed, isFirstItem }) => {
-  const lineWidth = "1px"
-  return <Grid columns={11}>
-    <Grid.Col span={1}>
-      <Stack gap={0} w={100}>
-        <Divider orientation="vertical" size={isFirstItem ? 0 : lineWidth} />
-        <DateTime2 datetime={feed.datetime} />
-        <Divider orientation="vertical" size={lineWidth} />
-      </Stack>
-    </Grid.Col>
-    <Grid.Col span={10}>
-      <Box p="sm">
-        <FeedItem feed={feed} />
-      </Box>
-    </Grid.Col>
-  </Grid>
+export const FeedGridItem: FC<{ feed: Item }> = ({ feed }) => {
+  const config = getConfigByMedia(feed.mediaId)
+  return (
+    <Timeline.Item
+      bullet={
+        <Box style={{
+          borderRadius: "50%",
+          backgroundColor: config?.bgColor ?? "gray.2",
+          width: "100%",
+          height: "100%"
+        }} />
+      }
+      title={<Stack gap="xs">
+        <Flex gap="sm">
+          <MediaBadge mediaId={feed.mediaId} />
+          <DateTime datetime={feed.datetime} />
+        </Flex>
+      </Stack>}
+    >
+      <FeedItem feed={feed} />
+    </Timeline.Item>
+  )
 }

@@ -1,5 +1,5 @@
 "use client"
-import { Box, Stack, Button, SimpleGrid, Title } from "@mantine/core"
+import { Box, Stack, Button, Title, Timeline } from "@mantine/core"
 import React, { FC, useState } from "react"
 import { Item } from "rss-parser"
 import useSWRImmutable from "swr/immutable"
@@ -38,13 +38,11 @@ export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
 
   return <Stack gap="md">
     <Title order={2}>Recent Posts</Title>
-    <SimpleGrid cols={1}>
-      <Stack gap={0}>
-        {data.slice(0, showFeedNum).map((d, i) => (
-          <FeedGridItem key={i} feed={d} isFirstItem={i === 0} />
-        ))}
-      </Stack>
-      <Button onClick={() => showMore()}>Show more</Button>
-    </SimpleGrid>
+    <Timeline active={showFeedNum} bulletSize={24} lineWidth={2}>
+      {data.slice(0, showFeedNum).map((d, i) => (
+        <FeedGridItem key={i} feed={d} />
+      ))}
+    </Timeline>
+    <Button onClick={() => showMore()}>Show more</Button>
   </Stack>
 }
