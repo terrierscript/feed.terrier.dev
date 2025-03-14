@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import styled from "@emotion/styled"
 import { FaGithub, FaTwitter } from "react-icons/fa"
+import { Anchor } from "@mantine/core"
 
 const FooterContainer = styled.footer`
   /* background: #f0f0f0; */
@@ -10,14 +11,20 @@ const FooterContainer = styled.footer`
   justify-content: center;
   line-height: 1.5em;
 `
-const LinkIcon = styled.a`
-  font-size: 1.5em;
-  padding: 0 0.2em;
-  color: #262626;
-  &:hover {
-    color: #404040;
-  }
-`
+
+const LinkIcon = (props: React.ComponentProps<typeof Anchor>) => (
+  <Anchor
+    {...props}
+    style={{
+      fontSize: '1.5em',
+      padding: '0 0.2em',
+      color: '#262626',
+      '&:hover': {
+        color: '#404040',
+      },
+    }}
+  />
+)
 
 const Name = styled.div`
   padding: 0 0.5em;
