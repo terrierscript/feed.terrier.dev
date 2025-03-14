@@ -7,6 +7,7 @@ import { MantineProvider } from '@mantine/core'
 import { customTheme } from "../lib/theme"
 import { mantineTheme } from "../lib/mantineTheme"
 import '@mantine/core/styles.css'
+import '../styles/global.css'
 
 function MyApp({
   Component,
