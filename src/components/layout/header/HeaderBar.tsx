@@ -12,8 +12,9 @@ export const impactFont = "Quicksand"
 
 const LogoLink = ({ children }: { children: React.ReactNode }) => (
   <Anchor
-    underline="never"
+    component="div"
     style={{
+      textDecoration: "none",
       fontWeight: "bold",
       fontFamily: impactFont,
       color: TITLE_BOLD_COLOR

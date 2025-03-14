@@ -20,7 +20,13 @@ const ListLink = ({ href, children }: ListLinkProps) => {
 const ListLinkFirst = ({ href, children }: ListLinkProps) => (
   <List.Item>
     <Text size="sm" lh="xs">
-      <Anchor href={href} c="gray.7">{children}</Anchor>
+      <Anchor
+        href={href}
+        c="gray.7"
+        style={{ textDecoration: "none" }}
+      >
+        {children}
+      </Anchor>
     </Text>
   </List.Item>
 )
@@ -28,7 +34,12 @@ const ListLinkFirst = ({ href, children }: ListLinkProps) => (
 const ListLinkSecond = ({ href, children }: ListLinkProps) => (
   <List.Item>
     <Text size="sm" lh="xs">
-      <Anchor href={href}>{children}</Anchor>
+      <Anchor
+        href={href}
+        style={{ textDecoration: "none" }}
+      >
+        {children}
+      </Anchor>
     </Text>
   </List.Item>
 )
@@ -45,7 +56,13 @@ const MainRow = () => {
 const MoreRow = () => {
   const [show, setShow] = useState(false)
   if (!show) {
-    return <Anchor onClick={() => setShow(true)} c="gray.5">more..</Anchor>
+    return <Anchor
+      onClick={() => setShow(true)}
+      c="gray.5"
+      style={{ textDecoration: "none" }}
+    >
+      more..
+    </Anchor>
   }
   return <List listStyleType="none">
     <ListLinkSecond href="https://blog.terrier.dev">Blog</ListLinkSecond>
