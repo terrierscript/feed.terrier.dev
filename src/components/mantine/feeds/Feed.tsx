@@ -35,7 +35,7 @@ export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
   if (!data) {
     return <div>loading</div>
   }
-  console.log({ data })
+
   return <Stack gap="md">
     <Title order={2}>Recent Posts</Title>
     <SimpleGrid cols={1}>

@@ -17,17 +17,17 @@ const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
   </Badge>
 }
 
-export const DateTime: FC<{ date: string | number | Date }> = ({ date }) => {
-  const dateObj = date instanceof Date ? date : new Date(date)
+export const DateTime: FC<{ datetime: number }> = ({ datetime }) => {
+  const date = new Date(datetime)
   return <Badge w="5rem" fw="normal">
-    {!isNaN(dateObj.getTime()) ? dateObj.toLocaleDateString("sv-SE") : "No Date"}
+    {date.toLocaleDateString("sv-SE")}
   </Badge>
 }
 
-export const DateTime2: FC<{ date: string | number | Date }> = ({ date }) => {
-  const dateObj = date instanceof Date ? date : new Date(date)
+export const DateTime2: FC<{ datetime: number }> = ({ datetime }) => {
+  const date = new Date(datetime)
   return <Box fz="xs" fw="normal">
-    {!isNaN(dateObj.getTime()) ? dateObj.toLocaleDateString("sv-SE") : "No Date"}
+    {date.toLocaleDateString("sv-SE")}
   </Box>
 }
 
@@ -56,7 +56,7 @@ export const FeedGridItem: FC<{ feed: Item, isFirstItem: boolean }> = ({ feed, i
     <Grid.Col span={1}>
       <Stack gap={0} w={100}>
         <Divider orientation="vertical" size={isFirstItem ? 0 : lineWidth} />
-        <DateTime2 date={feed.date || feed.isoDate || feed.pubDate} />
+        <DateTime2 datetime={feed.datetime} />
         <Divider orientation="vertical" size={lineWidth} />
       </Stack>
     </Grid.Col>
