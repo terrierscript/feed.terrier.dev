@@ -1,4 +1,3 @@
-"use client"
 import React from "react"
 import { Layout } from "../components/layout/Layout"
 import { MantineProvider, mantineHtmlProps } from '@mantine/core'
@@ -7,8 +6,8 @@ import '@mantine/core/styles.css'
 import '../styles/global.css'
 
 export const metadata = {
-  title: 'Feed | Terrier',
-  description: 'Personal feed aggregator',
+  title: 'terrier.dev',
+  description: 'about @terrierscript',
 }
 
 export default function RootLayout({
