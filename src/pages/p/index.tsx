@@ -1,8 +1,8 @@
 import React from 'react'
-import { Feeds } from "../components/feeds/Feed"
-import { Portfolio } from '../components/portfolio/Portfolio'
+import { Feeds } from "../../components/feeds/Feed"
+import { Portfolio } from '../../components/portfolio/Portfolio'
 import { Box } from '@mantine/core'
-import { loadAllForSSR } from '../lib/feed/loadAll'
+import { loadAllForSSR } from '../../lib/feed/loadAll'
 
 export async function getServerSideProps() {
   try {

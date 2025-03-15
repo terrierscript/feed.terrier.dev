@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { parseMedia } from "../../../lib/feed/parser/parseMedia"
-import { getConfigByMedia } from "../../../lib/feed/rssConfig"
+import { parseMedia } from "../../../../lib/feed/parser/parseMedia"
+import { getConfigByMedia } from "../../../../lib/feed/rssConfig"
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { media } = req.query
