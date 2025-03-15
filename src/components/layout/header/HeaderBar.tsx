@@ -1,14 +1,11 @@
 import { Box, Center, Group, Title, Anchor } from "@mantine/core"
-import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
 import React, { RefObject, useEffect, useMemo, useRef, useState } from "react"
 import { DogScrollDynamic } from "../../portfolio/Hero"
-import Head from "next/head"
 import { useMotionValueEvent, useScroll } from "framer-motion"
 export const TITLE_BOLD_COLOR = "#111"
 
 export const impactFont = "Quicksand"
-
 
 const LogoLink = ({ children }: { children: React.ReactNode }) => (
   <Anchor
@@ -23,17 +20,6 @@ const LogoLink = ({ children }: { children: React.ReactNode }) => (
     {children}
   </Anchor>
 )
-
-const logoAnimation = keyframes`
-  0% { font-size: 3.5em; color: black; padding-left:16px; }
-  10% {  font-size: 2em ; color: #333; padding-left:0px;}
-  100% {  font-size: 2em ; color: #333  padding-left:0px;}
-`
-
-const blockAnimation = keyframes`
-0% { padding-bottom: 20px; }
-10% { padding-bottom: 40px;}
-`
 
 // const useSafariPolyfill = (refs: RefObject<HTMLElement>[]) => {
 //   const needPolyfill: boolean = useMemo(() => {
@@ -81,15 +67,8 @@ export const Header = () => {
         animationTimingFunction: "linear",
         animationDuration: "1ms",
         animationFillMode: "forwards",
-        animationName: `${blockAnimation.name}`
+        animationName: "blockAnimation"
       }}>
-
-      <Head>
-        <style>
-          {logoAnimation.styles}
-          {blockAnimation.styles}
-        </style>
-      </Head>
       <Center>
         <Group>
           <DogScrollDynamic />
@@ -100,7 +79,7 @@ export const Header = () => {
                   animationTimingFunction: "linear",
                   animationDuration: "1ms",
                   animationFillMode: "forwards",
-                  animationName: `${logoAnimation.name}`,
+                  animationName: "logoAnimation",
                   animationTimeline: "--page-scroll"
                 }}>
                 terrier.dev
