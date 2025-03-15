@@ -1,3 +1,44 @@
 html {
   scroll-timeline-name: --page-scroll;
 }
+
+@keyframes dogRotate {
+  0% { 
+    transform: rotate(0turn) scale(1);
+  }
+  5% { 
+    transform: rotate(0.2turn) scale(0.6);
+  }
+  25% { 
+    transform: rotate(1turn) scale(0.6);
+  }
+  50% { 
+    transform: rotate(2turn) scale(0.6);
+  }
+  75% { 
+    transform: rotate(3turn) scale(0.6);
+  }
+  100% { 
+    transform: rotate(4turn) scale(0.6);
+  }
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logoAnimation {
+  0% { font-size: 3.5em; color: black; padding-left:16px; }
+  10% { font-size: 2em; color: #333; padding-left:0px; }
+  100% { font-size: 2em; color: #333; padding-left:0px; }
+}
+
+@keyframes blockAnimation {
+  0% { padding-bottom: 20px; }
+  10% { padding-bottom: 40px; }
+}
