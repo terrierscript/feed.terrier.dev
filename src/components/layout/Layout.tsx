@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, PropsWithChildren } from "react"
 import styled from "@emotion/styled"
 import { Footer } from "./Footer"
