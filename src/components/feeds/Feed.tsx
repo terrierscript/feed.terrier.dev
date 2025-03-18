@@ -1,17 +1,10 @@
 "use client"
 import { Box, Stack, Button, Title, Timeline } from "@mantine/core"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Item } from "rss-parser"
-import useSWRImmutable from "swr/immutable"
+import { useFeedAll } from "../../lib/feed/useFeedAll"
 import { getConfigByMedia } from "../../lib/feed/rssConfig"
 import { FeedGridItem } from "./FeedItem"
-
-const fetcher = (url: string) => fetch(url).then(r => r.json())
-export const useFeedAll = (initFeeds: Item[]) => {
-  return useSWRImmutable<Item[]>(`/api/feed`, fetcher, {
-    fallbackData: initFeeds
-  })
-}
 
 const Circle: FC<{ mediaId: string }> = ({ mediaId }) => {
   const media = getConfigByMedia(mediaId)
@@ -27,19 +20,19 @@ const Circle: FC<{ mediaId: string }> = ({ mediaId }) => {
 }
 
 export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
-  const { data } = useFeedAll(initFeeds)
+  const { feeds, isLoading } = useFeedAll()
   const [showFeedNum, setShowFeedsNum] = useState(20)
   const showMore = () => {
     setShowFeedsNum(s => s + 10)
   }
-  if (!data) {
+  if (isLoading) {
     return <div>loading</div>
   }
 
   return <Stack gap="md">
     <Title order={2}>Recent Posts</Title>
     <Timeline active={showFeedNum} bulletSize={24} lineWidth={2}>
-      {data.slice(0, showFeedNum).map((d, i) => (
+      {feeds.slice(0, showFeedNum).map((d, i) => (
         <FeedGridItem key={i} feed={d} />
       ))}
     </Timeline>
