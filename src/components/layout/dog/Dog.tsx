@@ -1,22 +1,13 @@
 import React, { useState } from "react"
-import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
 import NextImage from 'next/image'
 
 import { randomPretty } from "./randomPretty"
 import { animated } from "react-spring"
-const rotate360 = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
 
-  to {
-    transform: rotate(360deg);
-  }
-`
 const RotateImg = styled.div`
   vertical-align: middle;
-  animation: ${rotate360} 6s linear infinite;
+  animation: rotate360 6s linear infinite;
   animation-play-state: paused;
   :hover {
     animation-play-state: running;
