@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, PropsWithChildren } from "react"
 import styled from "@emotion/styled"
 import { FaGithub, FaTwitter } from "react-icons/fa"
 import { Anchor, AnchorProps } from "@mantine/core"
@@ -12,9 +12,10 @@ const FooterContainer = styled.footer`
   line-height: 1.5em;
 `
 
-const LinkIcon = (props: AnchorProps) => (
+const LinkIcon: FC<PropsWithChildren<AnchorProps & { href: string }>> = (props) => (
   <Anchor
     {...props}
+    href={props.href}
     style={{
       fontSize: '1.5em',
       padding: '0 0.2em',
