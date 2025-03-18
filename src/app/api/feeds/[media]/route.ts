@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from "next/server"
 import { parseMedia } from "../../../../lib/feed/parser/parseMedia"
 import { getConfigByMedia } from "../../../../lib/feed/rssConfig"
 
-export async function GET(
+export const GET = async function (
   request: NextRequest,
-  { params }: { params: { media: string } }
+  { params }: { params: Promise<{ media: string }> }
 ) {
-  const { media } = params
+  const { media } = await params
   if (!media || typeof media !== "string") {
     return new NextResponse(null, { status: 400 })
   }
