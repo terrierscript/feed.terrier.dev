@@ -39,33 +39,27 @@ export type RPCResponse<T> = {
   }
 }
 
-const app = new Hono()
+const app = new Hono().basePath("/api/feeds")
+
 
 // RPCメソッドの型定義
 type RPCMethods = {
   getFeeds: Feed[]
 }
 
-const route = app.post('/rpc', async (c) => {
-  const { method } = await c.req.json()
+const route = app.get('/', async (c) => {
+  // const { method } = await c.req
 
-  if (method === 'getFeeds') {
-    const feeds = await loadAllForSSR()
-    const validated = z.array(feedSchema).parse(feeds)
-    return c.json({
-      result: validated
-    })
-  }
-
+  const feeds = await loadAllForSSR()
+  // const validated = z.array(feedSchema).parse(feeds)
   return c.json({
-    error: {
-      message: 'Method not found'
-    }
-  }, 404)
+    result: feeds
+  })
+
 })
 
 export type AppType = typeof route
 export type { RPCMethods }
 export const GET = handle(app)
-export const POST = handle(app)
+// export const POST = handle(app)
 

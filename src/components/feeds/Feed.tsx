@@ -20,6 +20,7 @@ const Circle: FC<{ mediaId: string }> = ({ mediaId }) => {
 }
 
 export const Feeds: FC<{ initFeeds: Item[] }> = ({ initFeeds }) => {
+  console.log("FD")
   const { feeds, isLoading } = useFeedAll()
   const [showFeedNum, setShowFeedsNum] = useState(20)
   const showMore = () => {
