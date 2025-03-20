@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { loadAllForSSR } from '../../../../lib/feed/loadAll'
-import media from './media'
+import { mediaRoute } from './media'
 
 const feeds = new Hono()
 
@@ -11,4 +11,4 @@ export const feedRoute = feeds
       result: feeds
     })
   })
-  .route('/', media)
+  .route('/', mediaRoute)

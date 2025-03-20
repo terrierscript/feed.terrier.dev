@@ -4,7 +4,7 @@ import { getConfigByMedia } from '../../../../lib/feed/rssConfig'
 
 const media = new Hono()
 
-media.get('/:media', async (c) => {
+export const mediaRoute = media.get('/:media', async (c) => {
   const media = c.req.param('media')
   if (!media) {
     return c.json({
@@ -43,4 +43,3 @@ media.get('/:media', async (c) => {
   }
 })
 
-export default media
