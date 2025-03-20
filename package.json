@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "vitest"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@types/node": "^18.18.6",
     "@types/react": "^18.2.31",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
   }
 }
