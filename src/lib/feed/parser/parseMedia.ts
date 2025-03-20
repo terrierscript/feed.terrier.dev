@@ -13,7 +13,7 @@ export const parseMedia = async (config: Config) => {
       return parseZennRss(config.origin)
     case "zennScrap":
       const scr = await parseZennScrapApi(config.origin)
-      console.log({ scr })
+      // console.log({ scr })
       return scr
     default:
       return parseRss(config.origin)
