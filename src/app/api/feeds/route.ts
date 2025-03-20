@@ -42,11 +42,6 @@ export type RPCResponse<T> = {
 const app = new Hono().basePath("/api/feeds")
 
 
-// RPCメソッドの型定義
-type RPCMethods = {
-  getFeeds: Feed[]
-}
-
 const route = app.get('/', async (c) => {
   // const { method } = await c.req
 
@@ -59,7 +54,6 @@ const route = app.get('/', async (c) => {
 })
 
 export type AppType = typeof route
-export type { RPCMethods }
 export const GET = handle(app)
 // export const POST = handle(app)
 
