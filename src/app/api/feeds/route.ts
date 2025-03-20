@@ -39,6 +39,9 @@ export type RPCResponse<T> = {
   }
 }
 
+/**
+ * @deprecated Use /api/rpc/feeds instead
+ */
 const app = new Hono().basePath("/api/feeds")
 
 

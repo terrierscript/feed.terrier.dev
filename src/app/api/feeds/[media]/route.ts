@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server"
 import { parseMedia } from "../../../../lib/feed/parser/parseMedia"
 import { getConfigByMedia } from "../../../../lib/feed/rssConfig"
 
+/**
+ * @deprecated Use /api/rpc/feeds/:media instead
+ */
 export const GET = async function (
   request: NextRequest,
   { params }: { params: Promise<{ media: string }> }

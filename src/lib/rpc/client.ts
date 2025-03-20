@@ -1,4 +1,4 @@
 import { hc } from 'hono/client'
-import type { AppType, Feed, RPCMethods } from '../../app/api/feeds/route'
+import type { AppType } from '../../app/api/rpc/[...route]/route'
 
-export const honoClient = hc<AppType>('/api/feeds')
+export const honoClient = hc<AppType>('/api/rpc')
