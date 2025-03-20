@@ -11,4 +11,6 @@ export const feedRoute = feeds
       result: feeds
     })
   })
-  .route('/', mediaRoute)
+  .route('/:media', mediaRoute)
+
+export type FeedRouteType = typeof feedRoute

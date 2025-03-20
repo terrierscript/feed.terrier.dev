@@ -4,7 +4,7 @@ import { getConfigByMedia } from '../../../../lib/feed/rssConfig'
 
 const media = new Hono()
 
-export const mediaRoute = media.get('/:media', async (c) => {
+export const mediaRoute = media.get('', async (c) => {
   const media = c.req.param('media')
   if (!media) {
     return c.json({
@@ -42,4 +42,6 @@ export const mediaRoute = media.get('/:media', async (c) => {
     }, 500)
   }
 })
+
+export type MediaRouteType = typeof mediaRoute
 
