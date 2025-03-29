@@ -17,7 +17,7 @@
     "gray-matter": "^4.0.3",
     "next": "^15.2.4",
     "node-html-parser": "^6.1.13",
-    "parse5": "^7.1.2",
+    "parse5": "^7.2.1",
     "postcss": "^8.5.3",
     "postcss-preset-mantine": "^1.17.0",
     "react": "18.2.0",
