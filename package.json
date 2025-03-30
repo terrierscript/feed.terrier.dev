@@ -10,8 +10,8 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mantine/core": "^7.17.2",
-    "@mantine/hooks": "^7.17.2",
+    "@mantine/core": "^7.17.3",
+    "@mantine/hooks": "^7.17.3",
     "axios": "^0.30.0",
     "framer-motion": "^7.10.3",
     "gray-matter": "^4.0.3",
