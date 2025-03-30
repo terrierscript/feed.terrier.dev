@@ -20,8 +20,8 @@
     "parse5": "^7.2.1",
     "postcss": "^8.5.3",
     "postcss-preset-mantine": "^1.17.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-icons": "^4.12.0",
     "react-spring": "^9.7.5",
     "rss-parser": "^3.9.0",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.19.84",
-    "@types/react": "^18.2.31",
+    "@types/react": "^18.3.20",
     "typescript": "^5.8.2"
   }
 }
