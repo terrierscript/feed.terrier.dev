@@ -565,10 +565,10 @@
   dependencies:
     tslib "^2.8.0"
 
-"@types/node@^18.19.84":
-  version "18.19.84"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.84.tgz#29a1c36a9241a76351397993635f5b5fdbc2504c"
-  integrity sha512-ACYy2HGcZPHxEeWTqowTF7dhXN+JU1o7Gr4b41klnn6pj2LD6rsiGqSZojMdk1Jh2ys3m76ap+ae1vvE4+5+vg==
+"@types/node@^18.19.122":
+  version "18.19.122"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.122.tgz#e7358f8df7cc3f14e860198e1ca4dc2ed9a7de06"
+  integrity sha512-yzegtT82dwTNEe/9y+CM8cgb42WrUfMMCg2QqSddzO1J6uPmBD7qKCZ7dOHZP2Yrpm/kb0eqdNMn2MUyEiqBmA==
   dependencies:
     undici-types "~5.26.4"
 
