@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@mantine/core": "^7.17.3",
     "@mantine/hooks": "^7.17.3",
     "axios": "^0.30.0",
