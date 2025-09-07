@@ -15,7 +15,7 @@
     "axios": "^0.30.1",
     "framer-motion": "^7.10.3",
     "gray-matter": "^4.0.3",
-    "next": "^15.4.6",
+    "next": "^15.5.2",
     "node-html-parser": "^6.1.13",
     "parse5": "^7.3.0",
     "postcss": "^8.5.6",
