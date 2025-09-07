@@ -13,7 +13,7 @@
     "@mantine/core": "^7.17.8",
     "@mantine/hooks": "^7.17.8",
     "axios": "^0.30.1",
-    "framer-motion": "^7.10.3",
+    "framer-motion": "^12.23.12",
     "gray-matter": "^4.0.3",
     "next": "^15.5.2",
     "node-html-parser": "^6.1.13",
