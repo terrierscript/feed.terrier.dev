@@ -28,7 +28,7 @@
     "swr": "^2.3.6"
   },
   "devDependencies": {
-    "@types/node": "^18.19.123",
+    "@types/node": "^22.18.12",
     "@types/react": "^18.3.24",
     "typescript": "^5.9.2"
   }
