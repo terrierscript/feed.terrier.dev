@@ -1,8 +1,5 @@
 // const withImages = require('next-optimized-images')
 module.exports = {
-  webpack(config, options) {
-    return config
-  },
   async redirects() {
     return [
       {
