@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ja" {...mantineHtmlProps}>
       <body>
-        <MantineProvider theme={mantineTheme} defaultColorScheme="auto">
+        <MantineProvider theme={mantineTheme} defaultColorScheme="light">
           <Layout>
             {children}
           </Layout>
