@@ -5,14 +5,16 @@ import { Footer } from "./Footer"
 import { Header } from "./header/HeaderBar"
 
 const Container = styled.div`
-  min-width: 400px;
+  width: 100%;
+  min-width: 0;
 `
 
 const MainGrid = styled.div`
   display: grid;
-  grid-template-columns: minmax(min-content, 40vw);
+  grid-template-columns: minmax(0, min(100%, 40rem));
   justify-content: center;
   gap: 1rem;
+  padding: 0 1rem;
 `
 
 const Content = styled.div``

@@ -25,12 +25,14 @@ const AvaterLinks = () => {
 }
 
 export const Portfolio = () => {
-  const size = `min(32vw, 240px)`
   return <Box py="lg">
-    <SimpleGrid cols={2} spacing="lg"
+    <SimpleGrid
+      cols={{ base: 1, sm: 2 }}
+      spacing="lg"
       style={{
-        maxWidth: `calc(${size} * 2)`,
-        margin: '0 auto'
+        width: "100%",
+        maxWidth: "32rem",
+        margin: "0 auto"
       }}
     >
       <Stack>
