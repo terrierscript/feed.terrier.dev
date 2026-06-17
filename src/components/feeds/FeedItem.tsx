@@ -1,7 +1,7 @@
 "use client"
 import { Text, Badge, Box, Stack, Flex, Anchor, Timeline } from "@mantine/core"
 import React, { FC, useMemo } from "react"
-import { Item } from "rss-parser"
+import { FeedItemForSSR } from "../../lib/feed/loadAll"
 import { getConfigByMedia } from "../../lib/feed/rssConfig"
 
 const MediaBadge: FC<{ mediaId: string }> = ({ mediaId: media }) => {
@@ -33,7 +33,7 @@ export const DateTime2: FC<{ datetime: number }> = ({ datetime }) => {
   </Box>
 }
 
-const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
+const FeedItem: FC<{ feed: FeedItemForSSR }> = ({ feed }) => {
   const config = getConfigByMedia(feed.mediaId)
   const fontWeight = useMemo(() => config?.priority !== "low" ? "bold" : "normal", [config])
   const fontSize = useMemo(() => config?.priority !== "low" ? "lg" : "sm", [config])
@@ -49,7 +49,7 @@ const FeedItem: FC<{ feed: Item }> = ({ feed }) => {
   </Stack>
 }
 
-export const FeedGridItem: FC<{ feed: Item }> = ({ feed }) => {
+export const FeedGridItem: FC<{ feed: FeedItemForSSR }> = ({ feed }) => {
   const config = getConfigByMedia(feed.mediaId)
   return (
     <Timeline.Item
